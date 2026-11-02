@@ -1,0 +1,144 @@
+preview, not a master
+{
+  "arrangement_path": "midi/k01-iron-gate/arrangement.mid",
+  "arrangement_sha256": "9512d925c5112c2f067a4d8db65907d5f8f089456e3ca8fbf7c58ce8a3acf66a",
+  "encode": "libmp3lame CBR 192 kbps, mono source",
+  "excerpt": {
+    "bars": "17-31 of the 32-bar arrangement",
+    "end_tick": 119040,
+    "full_arrangement_bars": 32,
+    "full_arrangement_seconds": 80.0,
+    "kit": "k01",
+    "reason": "The preview is an excerpt of the 32-bar Iron Gate arrangement. Bars 17-24 are the open section. Bars 25-31 are the start of the return, and the return restates lead A. Bars 1-16, the opening theme and the pulse, stay in the MIDI and are not in the MP3. The full arrangement is longer than 40 seconds.",
+    "rendered_tick_zero": "arrangement tick minus the excerpt start",
+    "sequencing": [
+      {
+        "bars": 8,
+        "path": "midi/k01-iron-gate/drums-a.mid",
+        "role": "drums",
+        "source_part": "k01.drums.a",
+        "start_bar": 24
+      },
+      {
+        "bars": 8,
+        "path": "midi/k01-iron-gate/percussion-a.mid",
+        "role": "percussion",
+        "source_part": "k01.percussion.a",
+        "start_bar": 24
+      },
+      {
+        "bars": 8,
+        "path": "midi/k01-iron-gate/bass-a.mid",
+        "role": "bass",
+        "source_part": "k01.bass.a",
+        "start_bar": 24
+      },
+      {
+        "bars": 8,
+        "path": "midi/k01-iron-gate/rhythm-b.mid",
+        "role": "rhythm",
+        "source_part": "k01.rhythm.b",
+        "start_bar": 16
+      },
+      {
+        "bars": 8,
+        "path": "midi/k01-iron-gate/lead-a.mid",
+        "role": "lead",
+        "source_part": "k01.lead.a",
+        "start_bar": 24
+      },
+      {
+        "bars": 8,
+        "path": "midi/k01-iron-gate/pad-b.mid",
+        "role": "pad",
+        "source_part": "k01.pad.b",
+        "start_bar": 16
+      },
+      {
+        "bars": 8,
+        "path": "midi/k01-iron-gate/pad-a.mid",
+        "role": "pad",
+        "source_part": "k01.pad.a",
+        "start_bar": 24
+      }
+    ],
+    "start_tick": 61440,
+    "transposition": "none"
+  },
+  "intermediate_wav": "build/preview.wav",
+  "intermediate_wav_note": "The WAV is gitignored build storage. The delivered preview is the MP3.",
+  "intermediate_wav_sha256": "163d4a290c67ab84c0c77548bb1fe57f67213f1b1e592b166165fa291c378f09",
+  "label": "preview, not a master",
+  "listening": "No human listening audition was performed for this build.",
+  "mapping": {
+    "bass": "dull saw at the written pitch, short decay, held for the written duration",
+    "drums": "pitch 36 is a short sine kick; hats, snare, clap, stick, and crash are noise bursts",
+    "lead": "sine at the written pitch, held for the written duration",
+    "pad": "slow sine at the written pitch, held for the written duration",
+    "percussion": "same drum map as drums, separate part file",
+    "rhythm": "triangle at the written pitch, short decay"
+  },
+  "mp3_encode_command": [
+    "ffmpeg",
+    "-y",
+    "-i",
+    "/home/runner/work/darksynth/darksynth/build/preview.wav",
+    "-codec:a",
+    "libmp3lame",
+    "-b:a",
+    "192k",
+    "/home/runner/work/darksynth/darksynth/preview/preview.mp3"
+  ],
+  "mp3_path": "preview/preview.mp3",
+  "mp3_sha256": "cefe4390e19a51de243e5a09e7ef40c5cfc7af4de344b03926d3b8cc6c0d014a",
+  "pack_id": "darksynth",
+  "program_changes": "No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary.",
+  "renderer": "simple-synth-1.0.0",
+  "renderer_note": "These voices are preview mappings. They are not encoded in the MIDI file.",
+  "rounding": "sample = floor(seconds * sample_rate + 0.5), computed from tick 0; intervals are not summed",
+  "sample_peak": 22043,
+  "sample_peak_dbfs": -3.443584686178344,
+  "sample_peak_note": "This is a sample peak of the integer mix after scaling. It is not a loudness measurement and it is not a true-peak reading.",
+  "score_seconds": 37.5,
+  "score_sha256": "ae743a7debf4dc65adfe7fcffd71e0b38e2d9941b32ca29b4e5b49cbf7e5a587",
+  "seconds_encoded": 37.537959,
+  "source_parts": [
+    {
+      "id": "k01.drums.a",
+      "path": "midi/k01-iron-gate/drums-a.mid",
+      "sha256": "7d80088f4f3ca2c5abc2a1b86dee327bb049f026aa54939db0f5284f20427102"
+    },
+    {
+      "id": "k01.percussion.a",
+      "path": "midi/k01-iron-gate/percussion-a.mid",
+      "sha256": "f7b4eec7c89424053124b8715d31764d2a71588e94c6a0ede6fff5620f7d380a"
+    },
+    {
+      "id": "k01.bass.a",
+      "path": "midi/k01-iron-gate/bass-a.mid",
+      "sha256": "a20e8e3a4bdfbe1724be363a7710de670b5ff79e03856deb2395b06f40d42c94"
+    },
+    {
+      "id": "k01.rhythm.b",
+      "path": "midi/k01-iron-gate/rhythm-b.mid",
+      "sha256": "8a66cf46aa476b39305193e0d61408fa8f21a34e0c9a80339cb0cbc76ec7a399"
+    },
+    {
+      "id": "k01.lead.a",
+      "path": "midi/k01-iron-gate/lead-a.mid",
+      "sha256": "f2e2c1286671f1e82b914ce19b9f06124ef7b0b5405a9f8ac73066c40761c72b"
+    },
+    {
+      "id": "k01.pad.b",
+      "path": "midi/k01-iron-gate/pad-b.mid",
+      "sha256": "cf527d489c863778b9f87cf7b6939810142ec7d62f212be1d77e7ac1a5ab6226"
+    },
+    {
+      "id": "k01.pad.a",
+      "path": "midi/k01-iron-gate/pad-a.mid",
+      "sha256": "549d98c1302a8ef5d3e72122321cfd55268c43775503f7e5f3a70efadeff2f8b"
+    }
+  ],
+  "tempo_authority": "encoded MIDI tempo",
+  "tempo_us": 625000
+}

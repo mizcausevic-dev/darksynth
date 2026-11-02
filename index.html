@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Darksynth</title>
+  <link rel="icon" href="art/mark.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --bg: #07101c;
+      --ink: #f4efe6;
+      --muted: #9aa6b8;
+      --lime: #f0c14a;
+      --saffron: #ff8a4a;
+      --mint: #7ec8e3;
+      --line: rgba(240, 193, 74, .28);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      line-height: 1.45; padding-bottom: 32px;
+    }
+    a { color: var(--lime); }
+    img, video, audio { max-width: 100%; height: auto; }
+    button, .meta, .note, .transport, .lane-label { font-family: ui-monospace, Menlo, Consolas, monospace; }
+    header, main { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+    header { display: flex; justify-content: space-between; gap: 16px; align-items: end; padding: 22px 0 8px; }
+    .brand { letter-spacing: .16em; text-transform: uppercase; text-decoration: none; color: var(--ink); font-size: .78rem; }
+    nav { display: flex; gap: 14px; flex-wrap: wrap; font-size: .82rem; }
+    h1 { font-weight: 560; font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: .9; margin: 8px 0 12px; }
+    h2 { font-weight: 560; font-size: 1.5rem; margin: 28px 0 8px; }
+    .kicker { letter-spacing: .14em; text-transform: uppercase; color: var(--saffron); font-size: .74rem; margin: 0; }
+    .meta, .note { color: var(--muted); font-size: .84rem; }
+    .stage { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 22px; align-items: start; }
+    .hero img { display: block; width: 100%; height: auto; border-radius: 14px; }
+    .chooser, .switch { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0; }
+    button {
+      border: 1px solid var(--line); background: transparent; color: var(--ink);
+      border-radius: 999px; padding: 7px 12px; cursor: pointer;
+    }
+    button[aria-pressed="true"] { background: var(--lime); color: #1a1408; border-color: var(--lime); }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+    .scroller { overflow-x: auto; max-width: 100%; background: #050a14; border-radius: 14px; padding: 8px 0 12px; }
+    .ruler, .lane { position: relative; }
+    .ruler { height: 26px; }
+    .bar-mark { position: absolute; top: 4px; font-size: 11px; color: var(--muted); }
+    .lane { height: 74px; border-top: 1px solid rgba(231, 255, 228, .1); }
+    .lane-label {
+      position: sticky; left: 6px; top: 6px; z-index: 2;
+      display: inline-block; padding: 2px 6px; background: #07101c; color: var(--lime);
+      font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .blip { position: absolute; border-radius: 2px; min-width: 2px; }
+    .lane[data-role="drums"] .blip { background: var(--saffron); }
+    .lane[data-role="bass"] .blip { background: var(--lime); }
+    .lane[data-role="keys"] .blip { background: var(--mint); }
+    .lane[data-role="motif"] .blip { background: #ff8bd2; }
+    .lane[data-role="sequence"] .blip { background: #f2e27a; }
+    .lane[data-role="pad"] .blip { background: #9eb6ff; }
+    .legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: .78rem; color: var(--muted); }
+    .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 4px; }
+    .table-scroll { overflow-x: auto; max-width: 100%; }
+    table { width: 100%; border-collapse: collapse; font-size: .8rem; }
+    th, td { text-align: left; padding: 7px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .flow { display: flex; flex-wrap: wrap; gap: 8px; }
+    .flow span { border: 1px solid var(--line); border-radius: 999px; padding: 4px 8px; font-size: .78rem; }
+    .cards, .arrangements { display: grid; gap: 14px; }
+    .transport {
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+      margin: 8px 0 0; padding: 10px 0; border-top: 1px solid var(--line);
+    }
+    @media (max-width: 800px) {
+      .stage { grid-template-columns: 1fr; }
+      header { align-items: start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html">Darksynth</a>
+    <nav>
+      <a href="#bench">Kits</a>
+      <a href="#files">Files</a>
+      <a href="#reading">Preview</a>
+      <a href="media.html">Stills</a>
+      <a href="midi/k01-iron-gate/arrangement.mid">Kit 01 arrangement</a>
+    </nav>
+  </header>
+  <main>
+    <section class="stage">
+      <div>
+        <p class="kicker">Four kits · six core parts · two variations</p>
+        <h1>Darksynth</h1>
+        <p id="identity"></p>
+        <p class="meta" id="facts"></p>
+        <p class="note" id="limits"></p>
+      </div>
+      <figure class="hero">
+        <img src="art/hero.jpg" width="1280" height="720" alt="Illustration of three short gold strokes and a wide gap on a midnight field. Not a photograph of a studio or of performers.">
+        <figcaption class="note">Illustration of three motif strokes and an open gap. Not a photograph.</figcaption>
+      </figure>
+    </section>
+    <section id="bench">
+      <div class="chooser" id="chooser"></div>
+      <div class="switch">
+        <button type="button" id="var-a" aria-pressed="true">Variation A</button>
+        <button type="button" id="var-b" aria-pressed="false">Variation B</button>
+      </div>
+      <p class="note" id="cycles"></p>
+      <div class="scroller" id="scroller">
+        <div id="sheet">
+          <div class="ruler" id="ruler"></div>
+          <div class="lane" id="lane-drums" data-role="drums"><span class="lane-label">Drums</span></div><div class="lane" id="lane-percussion" data-role="percussion"><span class="lane-label">Percussion</span></div><div class="lane" id="lane-bass" data-role="bass"><span class="lane-label">Bass</span></div><div class="lane" id="lane-rhythm" data-role="rhythm"><span class="lane-label">Rhythmic Synth</span></div><div class="lane" id="lane-lead" data-role="lead"><span class="lane-label">Lead</span></div><div class="lane" id="lane-pad" data-role="pad"><span class="lane-label">Pad</span></div>
+        </div>
+      </div>
+      <p class="legend">
+        <span><i class="swatch" style="background:#ff8a4a"></i>drums</span>
+        <span><i class="swatch" style="background:#f0c14a"></i>bass</span>
+        <span><i class="swatch" style="background:#7ec8e3"></i>keys</span>
+        <span><i class="swatch" style="background:#ff8bd2"></i>motif</span>
+        <span><i class="swatch" style="background:#f2e27a"></i>sequence</span>
+        <span><i class="swatch" style="background:#9eb6ff"></i>pad</span>
+      </p>
+      <p class="note" id="status">Reading the part files.</p>
+      <p class="note">Space plays this variation. J and K change kit. The lanes are the 8-bar part files. The arrangement is a separate 32-bar file.</p>
+      <div class="transport">
+        <button type="button" id="play">Play kit</button>
+        <span id="transport-label">Space plays. J and K change kit.</span>
+      </div>
+    </section>
+    <p>Drums use MIDI channel index 9, the GM channel 10, and only the mapped pitches 36 kick, 37 side stick, 38 acoustic snare, 39 clap, 40 electric snare, 42 closed hat, 46 open hat, and 49 crash. Bass is monophonic, MIDI 41 to 62, channel 1, and it avoids the drum pitches. Harmonic keys allow four notes, MIDI 48 to 76, channel 2. Motif is monophonic, MIDI 60 to 86, channel 3. Sequence is monophonic, MIDI 52 to 81, channel 4. Pad allows four notes, MIDI 48 to 81, channel 5. C4 is 60.</p>
+    <p>Every arrangement is theme, pulse, open, return. The open section is thinner and has no drums, percussion, bass, or lead. The return restates motif A. Motif and pulse do not share a section. A bar stays 3840 ticks.</p>
+    <div class="flow" aria-label="File contract">
+      <span>Score</span><span>MIDI</span><span>Reopened validation</span><span>MP3</span><span>Film</span><span>Stills</span><span>Drafts</span>
+    </div>
+    <h2>Set map</h2>
+    <ul><li><strong>k01 Iron Gate</strong>, 96 BPM, D Mixolydian<ul><li>drums: k01.drums.a, k01.drums.b</li><li>percussion: k01.percussion.a, k01.percussion.b</li><li>bass: k01.bass.a, k01.bass.b</li><li>rhythm: k01.rhythm.a, k01.rhythm.b</li><li>lead: k01.lead.a, k01.lead.b</li><li>pad: k01.pad.a, k01.pad.b</li></ul></li><li><strong>k02 Black Motor</strong>, 104 BPM, A major<ul><li>drums: k02.drums.a, k02.drums.b</li><li>percussion: k02.percussion.a, k02.percussion.b</li><li>bass: k02.bass.a, k02.bass.b</li><li>rhythm: k02.rhythm.a, k02.rhythm.b</li><li>lead: k02.lead.a, k02.lead.b</li><li>pad: k02.pad.a, k02.pad.b</li></ul></li><li><strong>k03 Voltage Veil</strong>, 112 BPM, G Lydian<ul><li>drums: k03.drums.a, k03.drums.b</li><li>percussion: k03.percussion.a, k03.percussion.b</li><li>bass: k03.bass.a, k03.bass.b</li><li>rhythm: k03.rhythm.a, k03.rhythm.b</li><li>lead: k03.lead.a, k03.lead.b</li><li>pad: k03.pad.a, k03.pad.b</li></ul></li><li><strong>k04 Red Terminal</strong>, 120 BPM, F major<ul><li>drums: k04.drums.a, k04.drums.b</li><li>percussion: k04.percussion.a, k04.percussion.b</li><li>bass: k04.bass.a, k04.bass.b</li><li>rhythm: k04.rhythm.a, k04.rhythm.b</li><li>lead: k04.lead.a, k04.lead.b</li><li>pad: k04.pad.a, k04.pad.b</li></ul></li></ul>
+    <h2>Kit notes</h2>
+    <div class="cards"><article id="k01-card"><h3>Iron Gate</h3><p>Iron Gate is D Mixolydian at 128. The keys hold one chord for two bars, then rest before the next. The motif leaves a rest on the downbeat, rises a minor third, and sits out two later bars. Drums keep the kick on beat 1 and the snare on beat 3. The pulse uses straight eighths for four bars and is silent after that.</p><p class="meta">k01 · 96 BPM · 8 bar parts · 32 bar arrangement · D Mixolydian · tonic D · seed 96031</p><p>Motif B is an alternate file. It is not placed in the arrangement, so it does not sit on the theme. The pulse and the motif are in different sections. Do not stack them.</p><ul><li>Keys A changes chord every two bars: D dominant seventh, C major seventh, G major seventh, A minor seventh.</li><li>The open section is keys B, pulse B, and pad B. It has no drums, no bass, and no motif.</li><li>The return places motif A again, with the same drums, bass, keys, and pad as the theme.</li></ul><p>k01.lead.b G#4 at tick 11520 is outside D Mixolydian.</p></article><article id="k02-card"><h3>Black Motor</h3><p>White Cove is A major at 126. The motif starts on the downbeat and falls a major third before it climbs. The keys enter late, after tick 240, and the drums use a clap on beat 3 instead of a snare. Keys B ends on G major. G3 in that chord and G4 in motif B are outside A major.</p><p class="meta">k02 · 104 BPM · 8 bar parts · 32 bar arrangement · A major · tonic A · seed 104031</p><p>The G major chord is only in keys B, and keys B is only in the open section. Motif B is not in the arrangement.</p><ul><li>Keys A is A major seventh, D major, E major, then F# minor, two bars each.</li><li>Sequence A steps every 640 ticks for four bars, then rests.</li><li>Bass A follows A, D, E, and F#.</li></ul><p>k02.lead.b G4 at tick 15600 is outside A major.</p></article><article id="k03-card"><h3>Voltage Veil</h3><p>Glass Room is G Lydian at 132. Each keys A chord lasts four bars. The second chord includes C#, which is in G Lydian. The motif opens a perfect fourth and leaves long gaps. Sequence A moves in quarter notes. Keys B ends on C major. C4 in that chord and C5 in motif B are outside G Lydian.</p><p class="meta">k03 · 112 BPM · 8 bar parts · 32 bar arrangement · G Lydian · tonic G · seed 112031</p><p>The raised fourth in motif A is C#5, and it is inside the collection. The C natural notes are the departures.</p><ul><li>Keys A bars 1-4 are G major seventh. Bars 5-8 are D major seventh.</li><li>The open section keeps the C major chord with a sparse pulse and a pad.</li><li>Drums A still leave space: kick, hat, snare, hat, then a gap inside the bar.</li></ul><p>k03.lead.b C5 at tick 15360 is outside G Lydian.</p></article><article id="k04-card"><h3>Red Terminal</h3><p>Ferry Light is F major at 136. The motif moves by a major second, then a step down, with shorter notes than the other kits. The keys stab off the beat. The first chord is Bb major seventh. Bass B ends on F#3. Keys B ends on D major, which includes F#4. Motif B also sounds F#4.</p><p class="meta">k04 · 120 BPM · 8 bar parts · 32 bar arrangement · F major · tonic F · seed 120031</p><p>Bb is in F major. The three F# notes are outside F major. They are not a modulation. Motif B is an alternate and is not stacked on the return.</p><ul><li>Keys A is Bb major seventh, F major, D minor seventh, then C major.</li><li>Sequence A is sixteenth notes for four bars, then silence. It does not play with the motif.</li><li>The return restates motif A from F5.</li></ul><p>k04.bass.b F#3 at tick 27600 is outside F major. k04.lead.b F#4 at tick 15600 is outside F major.</p></article></div>
+    <h2>Arrangements</h2>
+    <div class="arrangements"><article><h3><a href="midi/k01-iron-gate/arrangement.mid">Iron Gate arrangement</a></h3><p>k01 32-bar arrangement. Theme 90 notes. Pulse 112 notes. Open 16 notes, roles pad, rhythm, ratio 0.178 of the theme, no drums, no bass, no motif. Return 90 notes and restates k01.lead.a.</p><ul><li>Theme, bars 1-8: k01.drums.a, k01.percussion.a, k01.bass.a, k01.lead.a, k01.pad.a</li><li>Pulse, bars 9-16: k01.drums.b, k01.percussion.b, k01.bass.b, k01.rhythm.a, k01.pad.a</li><li>Open, bars 17-24: k01.rhythm.b, k01.pad.b</li><li>Return, bars 25-32: k01.drums.a, k01.percussion.a, k01.bass.a, k01.lead.a, k01.pad.a</li></ul></article><article><h3><a href="midi/k02-black-motor/arrangement.mid">Black Motor arrangement</a></h3><p>k02 32-bar arrangement. Theme 90 notes. Pulse 80 notes. Open 16 notes, roles pad, rhythm, ratio 0.178 of the theme, no drums, no bass, no motif. Return 90 notes and restates k02.lead.a.</p><ul><li>Theme, bars 1-8: k02.drums.a, k02.percussion.a, k02.bass.a, k02.lead.a, k02.pad.a</li><li>Pulse, bars 9-16: k02.drums.b, k02.percussion.b, k02.bass.b, k02.rhythm.a, k02.pad.a</li><li>Open, bars 17-24: k02.rhythm.b, k02.pad.b</li><li>Return, bars 25-32: k02.drums.a, k02.percussion.a, k02.bass.a, k02.lead.a, k02.pad.a</li></ul></article><article><h3><a href="midi/k03-voltage-veil/arrangement.mid">Voltage Veil arrangement</a></h3><p>k03 32-bar arrangement. Theme 88 notes. Pulse 88 notes. Open 16 notes, roles pad, rhythm, ratio 0.182 of the theme, no drums, no bass, no motif. Return 88 notes and restates k03.lead.a.</p><ul><li>Theme, bars 1-8: k03.drums.a, k03.percussion.a, k03.bass.a, k03.lead.a, k03.pad.a</li><li>Pulse, bars 9-16: k03.drums.b, k03.percussion.b, k03.bass.b, k03.rhythm.a, k03.pad.a</li><li>Open, bars 17-24: k03.rhythm.b, k03.pad.b</li><li>Return, bars 25-32: k03.drums.a, k03.percussion.a, k03.bass.a, k03.lead.a, k03.pad.a</li></ul></article><article><h3><a href="midi/k04-red-terminal/arrangement.mid">Red Terminal arrangement</a></h3><p>k04 32-bar arrangement. Theme 84 notes. Pulse 136 notes. Open 16 notes, roles pad, rhythm, ratio 0.19 of the theme, no drums, no bass, no motif. Return 84 notes and restates k04.lead.a.</p><ul><li>Theme, bars 1-8: k04.drums.a, k04.percussion.a, k04.bass.a, k04.lead.a, k04.pad.a</li><li>Pulse, bars 9-16: k04.drums.b, k04.percussion.b, k04.bass.b, k04.rhythm.a, k04.pad.a</li><li>Open, bars 17-24: k04.rhythm.b, k04.pad.b</li><li>Return, bars 25-32: k04.drums.a, k04.percussion.a, k04.bass.a, k04.lead.a, k04.pad.a</li></ul></article></div>
+    <p>Use either the combined arrangement or the separate parts. Do not stack the part files on top of the combined file.</p>
+    <h2 id="files">Files</h2>
+    <p class="meta">Validation PASS. Core 48. Reference files 0. <a href="midi/validation-Cursor.json">validation report</a> · <a href="catalog/catalog-Cursor.json">catalog</a> · <a href="score/canonical-score-Cursor.json">canonical score</a></p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Part</th><th>Kit</th><th>Role</th><th>Var</th><th>Count</th><th>BPM</th><th>Notes</th></tr></thead>
+        <tbody><tr><td><a href="midi/k01-iron-gate/drums-a.mid">k01.drums.a</a></td><td>k01</td><td>drums</td><td>a</td><td>core</td><td>96</td><td>33</td></tr><tr><td><a href="midi/k01-iron-gate/drums-b.mid">k01.drums.b</a></td><td>k01</td><td>drums</td><td>b</td><td>core</td><td>96</td><td>40</td></tr><tr><td><a href="midi/k01-iron-gate/percussion-a.mid">k01.percussion.a</a></td><td>k01</td><td>percussion</td><td>a</td><td>core</td><td>96</td><td>24</td></tr><tr><td><a href="midi/k01-iron-gate/percussion-b.mid">k01.percussion.b</a></td><td>k01</td><td>percussion</td><td>b</td><td>core</td><td>96</td><td>24</td></tr><tr><td><a href="midi/k01-iron-gate/bass-a.mid">k01.bass.a</a></td><td>k01</td><td>bass</td><td>a</td><td>core</td><td>96</td><td>16</td></tr><tr><td><a href="midi/k01-iron-gate/bass-b.mid">k01.bass.b</a></td><td>k01</td><td>bass</td><td>b</td><td>core</td><td>96</td><td>8</td></tr><tr><td><a href="midi/k01-iron-gate/rhythm-a.mid">k01.rhythm.a</a></td><td>k01</td><td>rhythm</td><td>a</td><td>core</td><td>96</td><td>32</td></tr><tr><td><a href="midi/k01-iron-gate/rhythm-b.mid">k01.rhythm.b</a></td><td>k01</td><td>rhythm</td><td>b</td><td>core</td><td>96</td><td>8</td></tr><tr><td><a href="midi/k01-iron-gate/lead-a.mid">k01.lead.a</a></td><td>k01</td><td>lead</td><td>a</td><td>core</td><td>96</td><td>9</td></tr><tr><td><a href="midi/k01-iron-gate/lead-b.mid">k01.lead.b</a></td><td>k01</td><td>lead</td><td>b</td><td>core</td><td>96</td><td>9</td></tr><tr><td><a href="midi/k01-iron-gate/pad-a.mid">k01.pad.a</a></td><td>k01</td><td>pad</td><td>a</td><td>core</td><td>96</td><td>8</td></tr><tr><td><a href="midi/k01-iron-gate/pad-b.mid">k01.pad.b</a></td><td>k01</td><td>pad</td><td>b</td><td>core</td><td>96</td><td>8</td></tr><tr><td><a href="midi/k02-black-motor/drums-a.mid">k02.drums.a</a></td><td>k02</td><td>drums</td><td>a</td><td>core</td><td>104</td><td>32</td></tr><tr><td><a href="midi/k02-black-motor/drums-b.mid">k02.drums.b</a></td><td>k02</td><td>drums</td><td>b</td><td>core</td><td>104</td><td>32</td></tr><tr><td><a href="midi/k02-black-motor/percussion-a.mid">k02.percussion.a</a></td><td>k02</td><td>percussion</td><td>a</td><td>core</td><td>104</td><td>24</td></tr><tr><td><a href="midi/k02-black-motor/percussion-b.mid">k02.percussion.b</a></td><td>k02</td><td>percussion</td><td>b</td><td>core</td><td>104</td><td>8</td></tr><tr><td><a href="midi/k02-black-motor/bass-a.mid">k02.bass.a</a></td><td>k02</td><td>bass</td><td>a</td><td>core</td><td>104</td><td>16</td></tr><tr><td><a href="midi/k02-black-motor/bass-b.mid">k02.bass.b</a></td><td>k02</td><td>bass</td><td>b</td><td>core</td><td>104</td><td>8</td></tr><tr><td><a href="midi/k02-black-motor/rhythm-a.mid">k02.rhythm.a</a></td><td>k02</td><td>rhythm</td><td>a</td><td>core</td><td>104</td><td>24</td></tr><tr><td><a href="midi/k02-black-motor/rhythm-b.mid">k02.rhythm.b</a></td><td>k02</td><td>rhythm</td><td>b</td><td>core</td><td>104</td><td>8</td></tr><tr><td><a href="midi/k02-black-motor/lead-a.mid">k02.lead.a</a></td><td>k02</td><td>lead</td><td>a</td><td>core</td><td>104</td><td>10</td></tr><tr><td><a href="midi/k02-black-motor/lead-b.mid">k02.lead.b</a></td><td>k02</td><td>lead</td><td>b</td><td>core</td><td>104</td><td>9</td></tr><tr><td><a href="midi/k02-black-motor/pad-a.mid">k02.pad.a</a></td><td>k02</td><td>pad</td><td>a</td><td>core</td><td>104</td><td>8</td></tr><tr><td><a href="midi/k02-black-motor/pad-b.mid">k02.pad.b</a></td><td>k02</td><td>pad</td><td>b</td><td>core</td><td>104</td><td>8</td></tr><tr><td><a href="midi/k03-voltage-veil/drums-a.mid">k03.drums.a</a></td><td>k03</td><td>drums</td><td>a</td><td>core</td><td>112</td><td>32</td></tr><tr><td><a href="midi/k03-voltage-veil/drums-b.mid">k03.drums.b</a></td><td>k03</td><td>drums</td><td>b</td><td>core</td><td>112</td><td>32</td></tr><tr><td><a href="midi/k03-voltage-veil/percussion-a.mid">k03.percussion.a</a></td><td>k03</td><td>percussion</td><td>a</td><td>core</td><td>112</td><td>24</td></tr><tr><td><a href="midi/k03-voltage-veil/percussion-b.mid">k03.percussion.b</a></td><td>k03</td><td>percussion</td><td>b</td><td>core</td><td>112</td><td>24</td></tr><tr><td><a href="midi/k03-voltage-veil/bass-a.mid">k03.bass.a</a></td><td>k03</td><td>bass</td><td>a</td><td>core</td><td>112</td><td>16</td></tr><tr><td><a href="midi/k03-voltage-veil/bass-b.mid">k03.bass.b</a></td><td>k03</td><td>bass</td><td>b</td><td>core</td><td>112</td><td>8</td></tr><tr><td><a href="midi/k03-voltage-veil/rhythm-a.mid">k03.rhythm.a</a></td><td>k03</td><td>rhythm</td><td>a</td><td>core</td><td>112</td><td>16</td></tr><tr><td><a href="midi/k03-voltage-veil/rhythm-b.mid">k03.rhythm.b</a></td><td>k03</td><td>rhythm</td><td>b</td><td>core</td><td>112</td><td>8</td></tr><tr><td><a href="midi/k03-voltage-veil/lead-a.mid">k03.lead.a</a></td><td>k03</td><td>lead</td><td>a</td><td>core</td><td>112</td><td>8</td></tr><tr><td><a href="midi/k03-voltage-veil/lead-b.mid">k03.lead.b</a></td><td>k03</td><td>lead</td><td>b</td><td>core</td><td>112</td><td>8</td></tr><tr><td><a href="midi/k03-voltage-veil/pad-a.mid">k03.pad.a</a></td><td>k03</td><td>pad</td><td>a</td><td>core</td><td>112</td><td>8</td></tr><tr><td><a href="midi/k03-voltage-veil/pad-b.mid">k03.pad.b</a></td><td>k03</td><td>pad</td><td>b</td><td>core</td><td>112</td><td>8</td></tr><tr><td><a href="midi/k04-red-terminal/drums-a.mid">k04.drums.a</a></td><td>k04</td><td>drums</td><td>a</td><td>core</td><td>120</td><td>24</td></tr><tr><td><a href="midi/k04-red-terminal/drums-b.mid">k04.drums.b</a></td><td>k04</td><td>drums</td><td>b</td><td>core</td><td>120</td><td>32</td></tr><tr><td><a href="midi/k04-red-terminal/percussion-a.mid">k04.percussion.a</a></td><td>k04</td><td>percussion</td><td>a</td><td>core</td><td>120</td><td>24</td></tr><tr><td><a href="midi/k04-red-terminal/percussion-b.mid">k04.percussion.b</a></td><td>k04</td><td>percussion</td><td>b</td><td>core</td><td>120</td><td>24</td></tr><tr><td><a href="midi/k04-red-terminal/bass-a.mid">k04.bass.a</a></td><td>k04</td><td>bass</td><td>a</td><td>core</td><td>120</td><td>16</td></tr><tr><td><a href="midi/k04-red-terminal/bass-b.mid">k04.bass.b</a></td><td>k04</td><td>bass</td><td>b</td><td>core</td><td>120</td><td>8</td></tr><tr><td><a href="midi/k04-red-terminal/rhythm-a.mid">k04.rhythm.a</a></td><td>k04</td><td>rhythm</td><td>a</td><td>core</td><td>120</td><td>64</td></tr><tr><td><a href="midi/k04-red-terminal/rhythm-b.mid">k04.rhythm.b</a></td><td>k04</td><td>rhythm</td><td>b</td><td>core</td><td>120</td><td>8</td></tr><tr><td><a href="midi/k04-red-terminal/lead-a.mid">k04.lead.a</a></td><td>k04</td><td>lead</td><td>a</td><td>core</td><td>120</td><td>12</td></tr><tr><td><a href="midi/k04-red-terminal/lead-b.mid">k04.lead.b</a></td><td>k04</td><td>lead</td><td>b</td><td>core</td><td>120</td><td>9</td></tr><tr><td><a href="midi/k04-red-terminal/pad-a.mid">k04.pad.a</a></td><td>k04</td><td>pad</td><td>a</td><td>core</td><td>120</td><td>8</td></tr><tr><td><a href="midi/k04-red-terminal/pad-b.mid">k04.pad.b</a></td><td>k04</td><td>pad</td><td>b</td><td>core</td><td>120</td><td>8</td></tr></tbody>
+      </table>
+    </div>
+    <section id="reading">
+      <p class="kicker">Recorded reading · kit 01 · 17-31 of the 32-bar arrangement</p>
+      <p>The preview is an excerpt of the 32-bar Iron Gate arrangement. Bars 17-24 are the open section. Bars 25-31 are the start of the return, and the return restates lead A. Bars 1-16, the opening theme and the pulse, stay in the MIDI and are not in the MP3. The full arrangement is longer than 40 seconds. The score length of this excerpt is 37.500 seconds. The MP3 file reads 37.538 seconds. The full 32-bar arrangement is 80.000 seconds, so it is not the primary preview. preview, not a master. The film is 37.500 seconds and shows preview, not master.</p>
+      <audio controls preload="metadata" src="preview/preview.mp3"></audio>
+      <p><a href="preview/preview.mp3">preview/preview.mp3</a> · <a href="preview/preview-manifest-Cursor.txt">preview manifest</a></p>
+      <video controls preload="metadata" poster="film/poster.jpg" width="1280" height="720">
+        <source src="film/preview.mp4" type="video/mp4">
+        <track kind="captions" src="film/preview.vtt" srclang="en" label="English" default>
+      </video>
+      <p><a href="film/preview.mp4">film/preview.mp4</a> · <a href="film/preview.vtt">film/preview.vtt</a> · <a href="media.html">stills</a></p>
+    </section>
+    <h2>Article draft</h2>
+    <p class="kicker">DRAFT</p>
+    <h3>Darksynth is a note-only MIDI construction kit</h3>
+    <p>Tags: midi, darksynth, electronic, music production, composition</p>
+    <p>DRAFT. The GitHub repository is https://github.com/mizcausevic-dev/darksynth and it is public. The catalog page is https://mizcausevic-dev.github.io/darksynth/ . Treat that catalog address as live only after it responds.</p><p>Tags: midi, darksynth, electronic, music production, composition</p><p>The pack is four coordinated kits in 4/4. Tempos are 96, 104, 112, 120 BPM, one fixed integer per kit, inside the 90 to 125 range used for this project. Each kit has six core parts: drums, percussion, bass, rhythmic synth, lead, and pad. Every core part has two variations. That is 48 files. There is no reference-only count. Part files are 8 bars. Each kit also has one 32-bar arrangement.</p><p>The kits are Iron Gate in D Mixolydian, Black Motor in A major, Voltage Veil in G Lydian, Red Terminal in F major. k01.lead.a opens F#5 to A5, a minor third. k02.lead.a opens C#5 to A4, a major third. k03.lead.a opens B4 to E5, a perfect fourth. k04.lead.a opens F5 to G5, a major second. The lead hooks are different melodies. They are not transpositions of one line with the same velocities. Variation B of each part changes start times, pitches, and durations. Velocity alone is not the difference.</p><p>Each arrangement has four 8-bar sections. Bars 1-8 state the theme: drums, percussion, bass, lead, and pad, with the rhythmic synth silent. Bars 9-16 are the pulse section: drums, percussion, bass, rhythmic synth, and pad. The theme lead does not play in that section. Lead B is an alternate file and is not placed in the arrangement. Bars 17-24 are the open section: rhythmic synth B and pad B only. Bars 25-32 are the return. The return places the same lead A part as the theme, with the same drums, percussion, bass, and pad. The lead is restated. It is not a new tune.</p><p></p><p>k01.bass.a starts bar 1 D3, bar 3 C3, bar 5 G2, bar 7 A2. k02.bass.a starts bar 1 A2, bar 3 D3, bar 5 E3, bar 7 F#3. k03.bass.a starts bar 1 G2, bar 5 D3. k04.bass.a starts bar 1 Bb3, bar 3 F3, bar 5 D3, bar 7 C3.</p><p>Bass, rhythmic synth, and lead are monophonic. The pad may hold four notes. Drums and percussion are GM channel 10, MIDI channel index 9, with an explicit map: 36 kick, 37 side stick, 38 acoustic snare, 39 clap, 40 electric snare, 42 closed hat, 46 open hat, 49 crash. C4 is 60. The resolution is 960 ticks per quarter note. Offsets are 0. Seeds name the kits. Nothing is random. k01.lead.b G#4 at tick 11520 is outside D Mixolydian. k02.lead.b G4 at tick 15600 is outside A major. k03.lead.b C5 at tick 15360 is outside G Lydian. k04.bass.b F#3 at tick 27600 is outside F major. k04.lead.b F#4 at tick 15600 is outside F major.</p><p>No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary.</p><p>Darksynth is a creative label in this pack. It is not a claim of scene membership or a fixed genre boundary. Distortion and gain staging are not note-only MIDI properties. They are not in these files. The preview synth is a simple-synth with bounded drive: a short kick, noise for hats and snare, a dull saw for the bass, a triangle for the rhythmic synth, a pulse for the lead, and a slow tone for the pad. That mapping is documented. It is not a program change.</p><p>The primary preview is an excerpt of the 32-bar Iron Gate arrangement, bars 17-32, at 96 BPM. The preview is an excerpt of the 32-bar Iron Gate arrangement. Bars 17-24 are the open section. Bars 25-31 are the start of the return, and the return restates lead A. Bars 1-16, the opening theme and the pulse, stay in the MIDI and are not in the MP3. The full arrangement is longer than 40 seconds. preview, not a master. The film takes its audio from that preview file and shows the words preview, not master on the picture and in the WebVTT captions.</p><p>No human listening audition was performed for this build. The validator reopened the MIDI bytes and compared them with the canonical score. Lead intervals and departure flags were checked against those pitches. That is a structural check. The sample peak written beside the preview is the peak of the integer mix. It is not a loudness figure and it is not a true-peak reading. Nothing in this build is claimed as a master.</p><p>The stills are procedural illustrations of a low horizon, two sharp arcs, and a wide gap. The gap is the open section. They are not photographs of a session or of performers.</p><p>When a public URL exists, use either the combined arrangement or the separate parts. Use either the combined arrangement or the separate parts. Do not stack the part files on top of the combined file.</p><p>Call to action: the MIDI, the matched report, and the preview belong together. Do not publish this draft to Medium, Instagram, or X from the draft files alone.</p>
+    <p><a href="articles/medium-draft-Cursor.md">Article draft</a> · <a href="articles/medium-paste-Cursor.txt">plain text</a></p>
+    <p>No program changes are encoded. A conventional GM player will normally use its default piano program for pitched channels unless configured otherwise; compatible GM channel 10 percussion is treated separately. Player behavior may vary.</p>
+    <p>No human listening audition was performed for this build.</p>
+    <p>The GitHub repository is https://github.com/mizcausevic-dev/darksynth and it is public. The catalog page is https://mizcausevic-dev.github.io/darksynth/ . Treat that catalog address as live only after it responds.</p>
+  </main>
+  <script id="pack" type="application/json">{"roles": [{"id": "drums", "label": "Drums"}, {"id": "percussion", "label": "Percussion"}, {"id": "bass", "label": "Bass"}, {"id": "rhythm", "label": "Rhythmic Synth"}, {"id": "lead", "label": "Lead"}, {"id": "pad", "label": "Pad"}], "kits": [{"id": "k01", "title": "Iron Gate", "bpm": 96, "tempo_us": 625000, "bars": 8, "collection": "D Mixolydian", "tonic": "D", "identity": "Iron Gate is D Mixolydian at 128. The keys hold one chord for two bars, then rest before the next. The motif leaves a rest on the downbeat, rises a minor third, and sits out two later bars. Drums keep the kick on beat 1 and the snare on beat 3. The pulse uses straight eighths for four bars and is silent after that.", "limitations": "Motif B is an alternate file. It is not placed in the arrangement, so it does not sit on the theme. The pulse and the motif are in different sections. Do not stack them.", "cycles": ["Keys A changes chord every two bars: D dominant seventh, C major seventh, G major seventh, A minor seventh.", "The open section is keys B, pulse B, and pad B. It has no drums, no bass, and no motif.", "The return places motif A again, with the same drums, bass, keys, and pad as the theme."], "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "arrangement": "midi/k01-iron-gate/arrangement.mid"}, {"id": "k02", "title": "Black Motor", "bpm": 104, "tempo_us": 576923, "bars": 8, "collection": "A major", "tonic": "A", "identity": "White Cove is A major at 126. The motif starts on the downbeat and falls a major third before it climbs. The keys enter late, after tick 240, and the drums use a clap on beat 3 instead of a snare. Keys B ends on G major. G3 in that chord and G4 in motif B are outside A major.", "limitations": "The G major chord is only in keys B, and keys B is only in the open section. Motif B is not in the arrangement.", "cycles": ["Keys A is A major seventh, D major, E major, then F# minor, two bars each.", "Sequence A steps every 640 ticks for four bars, then rests.", "Bass A follows A, D, E, and F#."], "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "arrangement": "midi/k02-black-motor/arrangement.mid"}, {"id": "k03", "title": "Voltage Veil", "bpm": 112, "tempo_us": 535714, "bars": 8, "collection": "G Lydian", "tonic": "G", "identity": "Glass Room is G Lydian at 132. Each keys A chord lasts four bars. The second chord includes C#, which is in G Lydian. The motif opens a perfect fourth and leaves long gaps. Sequence A moves in quarter notes. Keys B ends on C major. C4 in that chord and C5 in motif B are outside G Lydian.", "limitations": "The raised fourth in motif A is C#5, and it is inside the collection. The C natural notes are the departures.", "cycles": ["Keys A bars 1-4 are G major seventh. Bars 5-8 are D major seventh.", "The open section keeps the C major chord with a sparse pulse and a pad.", "Drums A still leave space: kick, hat, snare, hat, then a gap inside the bar."], "spell": ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"], "arrangement": "midi/k03-voltage-veil/arrangement.mid"}, {"id": "k04", "title": "Red Terminal", "bpm": 120, "tempo_us": 500000, "bars": 8, "collection": "F major", "tonic": "F", "identity": "Ferry Light is F major at 136. The motif moves by a major second, then a step down, with shorter notes than the other kits. The keys stab off the beat. The first chord is Bb major seventh. Bass B ends on F#3. Keys B ends on D major, which includes F#4. Motif B also sounds F#4.", "limitations": "Bb is in F major. The three F# notes are outside F major. They are not a modulation. Motif B is an alternate and is not stacked on the return.", "cycles": ["Keys A is Bb major seventh, F major, D minor seventh, then C major.", "Sequence A is sixteenth notes for four bars, then silence. It does not play with the motif.", "The return restates motif A from F5."], "spell": ["C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B"], "arrangement": "midi/k04-red-terminal/arrangement.mid"}], "parts": [{"id": "k01.drums.a", "kit_id": "k01", "role": "drums", "variation": "a", "path": "midi/k01-iron-gate/drums-a.mid", "notes": 33}, {"id": "k01.drums.b", "kit_id": "k01", "role": "drums", "variation": "b", "path": "midi/k01-iron-gate/drums-b.mid", "notes": 40}, {"id": "k01.percussion.a", "kit_id": "k01", "role": "percussion", "variation": "a", "path": "midi/k01-iron-gate/percussion-a.mid", "notes": 24}, {"id": "k01.percussion.b", "kit_id": "k01", "role": "percussion", "variation": "b", "path": "midi/k01-iron-gate/percussion-b.mid", "notes": 24}, {"id": "k01.bass.a", "kit_id": "k01", "role": "bass", "variation": "a", "path": "midi/k01-iron-gate/bass-a.mid", "notes": 16}, {"id": "k01.bass.b", "kit_id": "k01", "role": "bass", "variation": "b", "path": "midi/k01-iron-gate/bass-b.mid", "notes": 8}, {"id": "k01.rhythm.a", "kit_id": "k01", "role": "rhythm", "variation": "a", "path": "midi/k01-iron-gate/rhythm-a.mid", "notes": 32}, {"id": "k01.rhythm.b", "kit_id": "k01", "role": "rhythm", "variation": "b", "path": "midi/k01-iron-gate/rhythm-b.mid", "notes": 8}, {"id": "k01.lead.a", "kit_id": "k01", "role": "lead", "variation": "a", "path": "midi/k01-iron-gate/lead-a.mid", "notes": 9}, {"id": "k01.lead.b", "kit_id": "k01", "role": "lead", "variation": "b", "path": "midi/k01-iron-gate/lead-b.mid", "notes": 9}, {"id": "k01.pad.a", "kit_id": "k01", "role": "pad", "variation": "a", "path": "midi/k01-iron-gate/pad-a.mid", "notes": 8}, {"id": "k01.pad.b", "kit_id": "k01", "role": "pad", "variation": "b", "path": "midi/k01-iron-gate/pad-b.mid", "notes": 8}, {"id": "k02.drums.a", "kit_id": "k02", "role": "drums", "variation": "a", "path": "midi/k02-black-motor/drums-a.mid", "notes": 32}, {"id": "k02.drums.b", "kit_id": "k02", "role": "drums", "variation": "b", "path": "midi/k02-black-motor/drums-b.mid", "notes": 32}, {"id": "k02.percussion.a", "kit_id": "k02", "role": "percussion", "variation": "a", "path": "midi/k02-black-motor/percussion-a.mid", "notes": 24}, {"id": "k02.percussion.b", "kit_id": "k02", "role": "percussion", "variation": "b", "path": "midi/k02-black-motor/percussion-b.mid", "notes": 8}, {"id": "k02.bass.a", "kit_id": "k02", "role": "bass", "variation": "a", "path": "midi/k02-black-motor/bass-a.mid", "notes": 16}, {"id": "k02.bass.b", "kit_id": "k02", "role": "bass", "variation": "b", "path": "midi/k02-black-motor/bass-b.mid", "notes": 8}, {"id": "k02.rhythm.a", "kit_id": "k02", "role": "rhythm", "variation": "a", "path": "midi/k02-black-motor/rhythm-a.mid", "notes": 24}, {"id": "k02.rhythm.b", "kit_id": "k02", "role": "rhythm", "variation": "b", "path": "midi/k02-black-motor/rhythm-b.mid", "notes": 8}, {"id": "k02.lead.a", "kit_id": "k02", "role": "lead", "variation": "a", "path": "midi/k02-black-motor/lead-a.mid", "notes": 10}, {"id": "k02.lead.b", "kit_id": "k02", "role": "lead", "variation": "b", "path": "midi/k02-black-motor/lead-b.mid", "notes": 9}, {"id": "k02.pad.a", "kit_id": "k02", "role": "pad", "variation": "a", "path": "midi/k02-black-motor/pad-a.mid", "notes": 8}, {"id": "k02.pad.b", "kit_id": "k02", "role": "pad", "variation": "b", "path": "midi/k02-black-motor/pad-b.mid", "notes": 8}, {"id": "k03.drums.a", "kit_id": "k03", "role": "drums", "variation": "a", "path": "midi/k03-voltage-veil/drums-a.mid", "notes": 32}, {"id": "k03.drums.b", "kit_id": "k03", "role": "drums", "variation": "b", "path": "midi/k03-voltage-veil/drums-b.mid", "notes": 32}, {"id": "k03.percussion.a", "kit_id": "k03", "role": "percussion", "variation": "a", "path": "midi/k03-voltage-veil/percussion-a.mid", "notes": 24}, {"id": "k03.percussion.b", "kit_id": "k03", "role": "percussion", "variation": "b", "path": "midi/k03-voltage-veil/percussion-b.mid", "notes": 24}, {"id": "k03.bass.a", "kit_id": "k03", "role": "bass", "variation": "a", "path": "midi/k03-voltage-veil/bass-a.mid", "notes": 16}, {"id": "k03.bass.b", "kit_id": "k03", "role": "bass", "variation": "b", "path": "midi/k03-voltage-veil/bass-b.mid", "notes": 8}, {"id": "k03.rhythm.a", "kit_id": "k03", "role": "rhythm", "variation": "a", "path": "midi/k03-voltage-veil/rhythm-a.mid", "notes": 16}, {"id": "k03.rhythm.b", "kit_id": "k03", "role": "rhythm", "variation": "b", "path": "midi/k03-voltage-veil/rhythm-b.mid", "notes": 8}, {"id": "k03.lead.a", "kit_id": "k03", "role": "lead", "variation": "a", "path": "midi/k03-voltage-veil/lead-a.mid", "notes": 8}, {"id": "k03.lead.b", "kit_id": "k03", "role": "lead", "variation": "b", "path": "midi/k03-voltage-veil/lead-b.mid", "notes": 8}, {"id": "k03.pad.a", "kit_id": "k03", "role": "pad", "variation": "a", "path": "midi/k03-voltage-veil/pad-a.mid", "notes": 8}, {"id": "k03.pad.b", "kit_id": "k03", "role": "pad", "variation": "b", "path": "midi/k03-voltage-veil/pad-b.mid", "notes": 8}, {"id": "k04.drums.a", "kit_id": "k04", "role": "drums", "variation": "a", "path": "midi/k04-red-terminal/drums-a.mid", "notes": 24}, {"id": "k04.drums.b", "kit_id": "k04", "role": "drums", "variation": "b", "path": "midi/k04-red-terminal/drums-b.mid", "notes": 32}, {"id": "k04.percussion.a", "kit_id": "k04", "role": "percussion", "variation": "a", "path": "midi/k04-red-terminal/percussion-a.mid", "notes": 24}, {"id": "k04.percussion.b", "kit_id": "k04", "role": "percussion", "variation": "b", "path": "midi/k04-red-terminal/percussion-b.mid", "notes": 24}, {"id": "k04.bass.a", "kit_id": "k04", "role": "bass", "variation": "a", "path": "midi/k04-red-terminal/bass-a.mid", "notes": 16}, {"id": "k04.bass.b", "kit_id": "k04", "role": "bass", "variation": "b", "path": "midi/k04-red-terminal/bass-b.mid", "notes": 8}, {"id": "k04.rhythm.a", "kit_id": "k04", "role": "rhythm", "variation": "a", "path": "midi/k04-red-terminal/rhythm-a.mid", "notes": 64}, {"id": "k04.rhythm.b", "kit_id": "k04", "role": "rhythm", "variation": "b", "path": "midi/k04-red-terminal/rhythm-b.mid", "notes": 8}, {"id": "k04.lead.a", "kit_id": "k04", "role": "lead", "variation": "a", "path": "midi/k04-red-terminal/lead-a.mid", "notes": 12}, {"id": "k04.lead.b", "kit_id": "k04", "role": "lead", "variation": "b", "path": "midi/k04-red-terminal/lead-b.mid", "notes": 9}, {"id": "k04.pad.a", "kit_id": "k04", "role": "pad", "variation": "a", "path": "midi/k04-red-terminal/pad-a.mid", "notes": 8}, {"id": "k04.pad.b", "kit_id": "k04", "role": "pad", "variation": "b", "path": "midi/k04-red-terminal/pad-b.mid", "notes": 8}]}</script>
+  <script>
+    const pack = JSON.parse(document.getElementById("pack").textContent);
+    const DRUM_ROW = {36: 0.78, 38: 0.58, 40: 0.5, 37: 0.64, 39: 0.42, 42: 0.24, 46: 0.14, 49: 0.06};
+    const chooser = document.getElementById("chooser");
+    const status = document.getElementById("status");
+    let kitId = "k01";
+    let variation = "a";
+    let laneNotes = {};
+    let audio = null;
+    let playing = false;
+    let followId = 0;
+    let rollWidth = 1440;
+
+    function kit() {
+      return pack.kits.find((item) => item.id === kitId);
+    }
+    function pitchName(pitch) {
+      const spell = kit().spell;
+      return spell[pitch % 12] + String(Math.floor(pitch / 12) - 1);
+    }
+    function readVlq(view, offset) {
+      let value = 0;
+      let byte = 0;
+      do {
+        byte = view.getUint8(offset);
+        offset += 1;
+        value = (value << 7) | (byte & 0x7f);
+      } while (byte & 0x80);
+      return [value, offset];
+    }
+    function parseMidi(buffer) {
+      const view = new DataView(buffer);
+      if (String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3)) !== "MThd" || view.getUint16(12) !== 960) {
+        throw new Error("unexpected MIDI header");
+      }
+      const tracks = view.getUint16(10);
+      let offset = 14;
+      const notes = [];
+      for (let track = 0; track < tracks; track += 1) {
+        if (String.fromCharCode(view.getUint8(offset), view.getUint8(offset + 1), view.getUint8(offset + 2), view.getUint8(offset + 3)) !== "MTrk") {
+          throw new Error("missing track");
+        }
+        const length = view.getUint32(offset + 4);
+        offset += 8;
+        const end = offset + length;
+        let tick = 0;
+        let running = 0;
+        const open = new Map();
+        while (offset < end) {
+          let delta;
+          [delta, offset] = readVlq(view, offset);
+          tick += delta;
+          let byte = view.getUint8(offset);
+          if (byte >= 0x80) {
+            running = byte;
+            offset += 1;
+          }
+          if (running === 0xff) {
+            offset += 1;
+            let metaLen;
+            [metaLen, offset] = readVlq(view, offset);
+            offset += metaLen;
+            continue;
+          }
+          const kind = running & 0xf0;
+          const data1 = byte < 0x80 ? byte : view.getUint8(offset);
+          if (byte >= 0x80) offset += 1;
+          let data2 = 0;
+          if (kind !== 0xc0 && kind !== 0xd0) {
+            data2 = view.getUint8(offset);
+            offset += 1;
+          }
+          const key = (running & 0x0f) + ":" + data1;
+          if (kind === 0x90 && data2 > 0) open.set(key, { tick: tick, velocity: data2 });
+          else if (kind === 0x80 || (kind === 0x90 && data2 === 0)) {
+            const started = open.get(key);
+            if (started) {
+              notes.push({ pitch: data1, start: started.tick, duration: tick - started.tick, velocity: started.velocity });
+              open.delete(key);
+            }
+          }
+        }
+      }
+      notes.sort((a, b) => a.start - b.start || a.pitch - b.pitch);
+      return notes;
+    }
+    function renderCopy() {
+      const item = kit();
+      document.getElementById("identity").textContent = item.identity;
+      document.getElementById("facts").textContent = item.id + " · " + item.bpm + " BPM · " + item.bars + " bar parts · " + item.collection + " · tonic " + item.tonic;
+      document.getElementById("limits").textContent = item.limitations;
+      document.getElementById("cycles").textContent = item.cycles[0];
+      document.getElementById("transport-label").textContent = item.title + " " + variation.toUpperCase() + " · Space plays · J and K change kit";
+      for (const button of chooser.querySelectorAll("button")) {
+        button.setAttribute("aria-pressed", button.dataset.id === kitId ? "true" : "false");
+      }
+      document.getElementById("var-a").setAttribute("aria-pressed", variation === "a" ? "true" : "false");
+      document.getElementById("var-b").setAttribute("aria-pressed", variation === "b" ? "true" : "false");
+    }
+    function draw() {
+      const item = kit();
+      const container = item.bars * 4 * 960;
+      rollWidth = Math.max(960, item.bars * 180);
+      const sheet = document.getElementById("sheet");
+      sheet.style.width = rollWidth + "px";
+      const ruler = document.getElementById("ruler");
+      ruler.style.width = rollWidth + "px";
+      ruler.innerHTML = "";
+      for (let bar = 0; bar < item.bars; bar += 1) {
+        const mark = document.createElement("div");
+        mark.className = "bar-mark";
+        mark.textContent = String(bar + 1);
+        mark.style.left = (bar / item.bars) * rollWidth + "px";
+        ruler.appendChild(mark);
+      }
+      pack.roles.forEach((role) => {
+        const host = document.getElementById("lane-" + role.id);
+        host.style.width = rollWidth + "px";
+        host.querySelectorAll(".blip").forEach((node) => node.remove());
+        const notes = laneNotes[role.id] || [];
+        const low = notes.length ? Math.min(...notes.map((note) => note.pitch)) : 0;
+        const high = notes.length ? Math.max(...notes.map((note) => note.pitch)) : 1;
+        const span = Math.max(1, high - low);
+        notes.forEach((note) => {
+          const blip = document.createElement("div");
+          blip.className = "blip";
+          blip.title = (role.id === "drums" ? "GM " + note.pitch : pitchName(note.pitch)) + " · " + note.velocity;
+          const y = role.id === "drums" && DRUM_ROW[note.pitch] !== undefined
+            ? 8 + DRUM_ROW[note.pitch] * 48
+            : 10 + (1 - (note.pitch - low) / span) * 46;
+          blip.style.left = (note.start / container) * rollWidth + "px";
+          blip.style.width = Math.max(2, (note.duration / container) * rollWidth - 1) + "px";
+          blip.style.top = y + "px";
+          blip.style.height = (6 + (note.velocity / 127) * 10) + "px";
+          host.appendChild(blip);
+        });
+      });
+    }
+    async function loadKit() {
+      stopPlayback();
+      renderCopy();
+      status.textContent = "Reading the part files.";
+      try {
+        const loaded = await Promise.all(pack.roles.map(async (role) => {
+          const part = pack.parts.find((item) => item.kit_id === kitId && item.role === role.id && item.variation === variation);
+          if (!part) throw new Error("missing " + role.id);
+          const response = await fetch(part.path);
+          if (!response.ok) throw new Error(part.path);
+          const notes = parseMidi(await response.arrayBuffer());
+          return { role: role.id, notes: notes, expected: part.notes };
+        }));
+        laneNotes = {};
+        let total = 0;
+        const mismatches = [];
+        loaded.forEach((lane) => {
+          laneNotes[lane.role] = lane.notes;
+          total += lane.notes.length;
+          if (lane.notes.length !== lane.expected) mismatches.push(lane.role);
+        });
+        draw();
+        status.textContent = "Fetched " + total + " notes from the six part files."
+          + (mismatches.length ? " Count mismatch: " + mismatches.join(", ") : " Counts match the catalog.");
+      } catch (error) {
+        laneNotes = {};
+        status.textContent = "The MIDI did not load. " + error.message;
+      }
+    }
+    function freq(pitch) {
+      return 440 * Math.pow(2, (pitch - 69) / 12);
+    }
+    function schedule(ctx, note, origin, amount, type) {
+      const item = kit();
+      const seconds = (tick) => tick / 960 * item.tempo_us / 1000000;
+      const when = origin + seconds(note.start);
+      const duration = Math.max(0.03, seconds(note.duration));
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.value = freq(note.pitch);
+      const level = amount * (note.velocity / 110);
+      const attack = Math.min(0.01, duration * 0.2);
+      gain.gain.setValueAtTime(0.0001, when);
+      gain.gain.exponentialRampToValueAtTime(Math.max(0.0002, level), when + attack);
+      gain.gain.exponentialRampToValueAtTime(0.0001, when + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(when);
+      osc.stop(when + duration + 0.02);
+    }
+    function scheduleDrum(ctx, note, origin) {
+      const item = kit();
+      const seconds = (tick) => tick / 960 * item.tempo_us / 1000000;
+      const when = origin + seconds(note.start);
+      const duration = Math.max(0.03, Math.min(0.2, seconds(note.duration)));
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = note.pitch === 36 ? "sine" : "square";
+      osc.frequency.value = note.pitch === 36 ? 70 : note.pitch === 42 || note.pitch === 46 ? 2400 : 180;
+      const level = (note.pitch === 36 ? 0.12 : 0.03) * (note.velocity / 110);
+      gain.gain.setValueAtTime(0.0001, when);
+      gain.gain.exponentialRampToValueAtTime(level, when + 0.004);
+      gain.gain.exponentialRampToValueAtTime(0.0001, when + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(when);
+      osc.stop(when + duration + 0.02);
+    }
+    function stopPlayback() {
+      playing = false;
+      cancelAnimationFrame(followId);
+      if (audio) audio.close();
+      audio = null;
+      document.getElementById("play").textContent = "Play kit";
+    }
+    function playKit() {
+      const notes = Object.values(laneNotes).some((lane) => lane.length);
+      if (!notes) return;
+      stopPlayback();
+      const ctx = new AudioContext();
+      audio = ctx;
+      playing = true;
+      document.getElementById("play").textContent = "Stop";
+      const origin = ctx.currentTime + 0.05;
+      pack.roles.forEach((role) => {
+        (laneNotes[role.id] || []).forEach((note) => {
+          if (role.id === "drums") scheduleDrum(ctx, note, origin);
+          else if (role.id === "bass") schedule(ctx, note, origin, 0.08, "sawtooth");
+          else if (role.id === "pad") schedule(ctx, note, origin, 0.03, "sine");
+          else if (role.id === "motif") schedule(ctx, note, origin, 0.05, "sine");
+          else if (role.id === "sequence") schedule(ctx, note, origin, 0.04, "triangle");
+          else if (role.id === "keys") schedule(ctx, note, origin, 0.04, "triangle");
+          else schedule(ctx, note, origin, 0.04, "triangle");
+        });
+      });
+      const item = kit();
+      const container = item.bars * 4 * 60 / item.bpm;
+      const follow = () => {
+        if (!playing || !audio) return;
+        if (audio.currentTime - origin < container) followId = requestAnimationFrame(follow);
+        else stopPlayback();
+      };
+      follow();
+    }
+    function stepKit(direction) {
+      const index = pack.kits.findIndex((item) => item.id === kitId);
+      kitId = pack.kits[(index + direction + pack.kits.length) % pack.kits.length].id;
+      loadKit();
+    }
+    pack.kits.forEach((item) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.id = item.id;
+      button.textContent = item.title + " " + item.bpm;
+      button.addEventListener("click", () => { kitId = item.id; loadKit(); });
+      chooser.appendChild(button);
+    });
+    document.getElementById("var-a").addEventListener("click", () => { variation = "a"; loadKit(); });
+    document.getElementById("var-b").addEventListener("click", () => { variation = "b"; loadKit(); });
+    document.getElementById("play").addEventListener("click", () => { if (playing) stopPlayback(); else playKit(); });
+    window.addEventListener("keydown", (event) => {
+      const target = event.target;
+      if (target && (target.tagName === "INPUT" || target.tagName === "TEXTAREA")) return;
+      if (target && target.closest && target.closest("video, audio")) return;
+      if (event.code === "Space") {
+        event.preventDefault();
+        if (playing) stopPlayback();
+        else playKit();
+      } else if (event.key === "j" || event.key === "J") stepKit(-1);
+      else if (event.key === "k" || event.key === "K") stepKit(1);
+    });
+    loadKit();
+  </script>
+</body>
+</html>

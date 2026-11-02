@@ -1,0 +1,61 @@
+{
+  "audio_bitrate": "160k",
+  "audio_codec": "aac",
+  "audio_source": "preview/preview.mp3",
+  "audio_source_sha256": "cefe4390e19a51de243e5a09e7ef40c5cfc7af4de344b03926d3b8cc6c0d014a",
+  "duration_relation": "MP3 container probe 37.538 seconds. MP4 probe 37.500 seconds. The film ends on a video frame, so it is slightly shorter than the MP3 container. The music is the same preview, not a different excerpt.",
+  "duration_seconds": 37.5,
+  "encode_command": [
+    "ffmpeg",
+    "-y",
+    "-loop",
+    "1",
+    "-framerate",
+    "24",
+    "-i",
+    "/home/runner/work/darksynth/darksynth/build/plate.jpg",
+    "-i",
+    "/home/runner/work/darksynth/darksynth/preview/preview.mp3",
+    "-t",
+    "37.537959",
+    "-vf",
+    "scale=1280:720,drawtext=textfile=/home/runner/work/darksynth/darksynth/build/onpicture.txt:fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:fontsize=48:fontcolor=white:x=(w-text_w)/2:y=h-100:box=1:boxcolor=black@0.68:boxborderw=22",
+    "-r",
+    "24",
+    "-c:v",
+    "libx264",
+    "-pix_fmt",
+    "yuv420p",
+    "-c:a",
+    "aac",
+    "-b:a",
+    "160k",
+    "-shortest",
+    "-movflags",
+    "+faststart",
+    "/home/runner/work/darksynth/darksynth/film/preview.mp4"
+  ],
+  "font": "DejaVu Sans Bold, build machine only, not redistributed",
+  "listening": "No human listening audition was performed for this build.",
+  "mp3_duration_seconds": 37.537959,
+  "on_picture": "preview, not master",
+  "picture_source": "build/plate.jpg from the wide procedural paint. Disclosure text is drawn on top.",
+  "reencode_note": "Film audio is decoded from the MP3 and encoded as AAC. It is not byte-identical to the preview.",
+  "streams": [
+    {
+      "codec_name": "h264",
+      "codec_type": "video",
+      "height": 720,
+      "width": 1280
+    },
+    {
+      "channels": 1,
+      "codec_name": "aac",
+      "codec_type": "audio",
+      "sample_rate": "44100"
+    }
+  ],
+  "textfile_contents": "preview, not master",
+  "video_codec": "libx264",
+  "vtt": "film/preview.vtt"
+}

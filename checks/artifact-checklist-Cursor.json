@@ -1,0 +1,138 @@
+{
+  "items": [
+    {
+      "evidence": "/home/runner/work/darksynth/darksynth/midi/validation-Cursor.json",
+      "mandatory": true,
+      "name": "validation report PASS",
+      "status": "PASS"
+    },
+    {
+      "evidence": "/home/runner/work/darksynth/darksynth/midi/validation-Cursor.json",
+      "mandatory": true,
+      "name": "reopened MIDI hashes still match the report",
+      "status": "PASS"
+    },
+    {
+      "evidence": "/home/runner/work/darksynth/darksynth/preview/preview.mp3 duration 37.537959",
+      "mandatory": true,
+      "name": "primary MP3 preview",
+      "status": "PASS"
+    },
+    {
+      "evidence": "/home/runner/work/darksynth/darksynth/preview/preview-manifest-Cursor.txt",
+      "mandatory": true,
+      "name": "preview manifest line and provenance",
+      "status": "PASS"
+    },
+    {
+      "evidence": "{\"duration\": 37.5, \"video\": true, \"audio\": true, \"streams\": [{\"codec_name\": \"h264\", \"codec_type\": \"video\", \"width\": 1280, \"height\": 720}, {\"codec_name\": \"aac\", \"codec_type\": \"audio\", \"sample_rate\": \"44100\", \"channels\": 1}]}",
+      "mandatory": true,
+      "name": "MP4 with audio and video",
+      "status": "PASS"
+    },
+    {
+      "evidence": "film/preview.vtt",
+      "mandatory": true,
+      "name": "WebVTT disclosure and bounds",
+      "status": "PASS"
+    },
+    {
+      "evidence": "(1280, 720)",
+      "mandatory": true,
+      "name": "hero JPEG 1280x720",
+      "status": "PASS"
+    },
+    {
+      "evidence": "(1080, 1080)",
+      "mandatory": true,
+      "name": "square JPEG 1080x1080",
+      "status": "PASS"
+    },
+    {
+      "evidence": "(1280, 720)",
+      "mandatory": true,
+      "name": "poster JPEG",
+      "status": "PASS"
+    },
+    {
+      "evidence": "(1080, 1080)",
+      "mandatory": true,
+      "name": "Instagram square 1080",
+      "status": "PASS"
+    },
+    {
+      "evidence": "(1080, 1350)",
+      "mandatory": true,
+      "name": "Instagram portrait 1080x1350",
+      "status": "PASS"
+    },
+    {
+      "evidence": "(1600, 900)",
+      "mandatory": true,
+      "name": "X image",
+      "status": "PASS"
+    },
+    {
+      "evidence": "social/instagram-Cursor/captions-Cursor.md",
+      "mandatory": true,
+      "name": "Instagram captions draft",
+      "status": "PASS"
+    },
+    {
+      "evidence": "235 characters",
+      "mandatory": true,
+      "name": "X post draft under 280 characters",
+      "status": "PASS"
+    },
+    {
+      "evidence": "social/x-Cursor/alt-text-Cursor.txt",
+      "mandatory": true,
+      "name": "X alt text",
+      "status": "PASS"
+    },
+    {
+      "evidence": "articles/medium-draft-Cursor.md",
+      "mandatory": true,
+      "name": "article draft and plain text",
+      "status": "PASS"
+    },
+    {
+      "evidence": "index.html",
+      "mandatory": true,
+      "name": "catalog page",
+      "status": "PASS"
+    },
+    {
+      "evidence": "README.md",
+      "mandatory": true,
+      "name": "README describes this pack",
+      "status": "PASS"
+    },
+    {
+      "evidence": "text scan",
+      "mandatory": true,
+      "name": "no em dash in authored pack text",
+      "status": "PASS"
+    },
+    {
+      "evidence": "No human listening audition was performed for this build.",
+      "mandatory": false,
+      "name": "human listening audition",
+      "status": "NOT RUN"
+    },
+    {
+      "evidence": "No loudness validator was run. Sample peak is recorded separately and is not a loudness claim.",
+      "mandatory": false,
+      "name": "loudness measurement",
+      "status": "NOT RUN"
+    },
+    {
+      "evidence": "Publication is checked after the Pages URL responds.",
+      "mandatory": false,
+      "name": "external publication",
+      "status": "NOT RUN"
+    }
+  ],
+  "listening": "No human listening audition was performed for this build.",
+  "result": "PASS"
+}

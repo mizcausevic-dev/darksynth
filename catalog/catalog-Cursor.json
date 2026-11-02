@@ -1,0 +1,2085 @@
+{
+  "arrangement": {
+    "bpm": 96,
+    "container_bars": 32,
+    "container_ticks": 122880,
+    "description": "k01 32-bar arrangement. Theme 90 notes. Pulse 112 notes. Open 16 notes, roles pad, rhythm, ratio 0.178 of the theme, no drums, no bass, no motif. Return 90 notes and restates k01.lead.a.",
+    "format": 1,
+    "id": "k01-arrangement",
+    "kit_id": "k01",
+    "meter": "4/4",
+    "path": "midi/k01-iron-gate/arrangement.mid",
+    "sections": [
+      {
+        "bars": 8,
+        "name": "Theme",
+        "parts": [
+          "k01.drums.a",
+          "k01.percussion.a",
+          "k01.bass.a",
+          "k01.lead.a",
+          "k01.pad.a"
+        ],
+        "start_bar": 0
+      },
+      {
+        "bars": 8,
+        "name": "Pulse",
+        "parts": [
+          "k01.drums.b",
+          "k01.percussion.b",
+          "k01.bass.b",
+          "k01.rhythm.a",
+          "k01.pad.a"
+        ],
+        "start_bar": 8
+      },
+      {
+        "bars": 8,
+        "name": "Open",
+        "parts": [
+          "k01.rhythm.b",
+          "k01.pad.b"
+        ],
+        "start_bar": 16
+      },
+      {
+        "bars": 8,
+        "name": "Return",
+        "parts": [
+          "k01.drums.a",
+          "k01.percussion.a",
+          "k01.bass.a",
+          "k01.lead.a",
+          "k01.pad.a"
+        ],
+        "start_bar": 24
+      }
+    ],
+    "tempo_us": 625000,
+    "tracks": [
+      {
+        "channel": null,
+        "name": "Conductor",
+        "placements": null,
+        "role": null,
+        "source_part": null
+      },
+      {
+        "channel": 9,
+        "name": "Drums",
+        "placements": [
+          {
+            "source_part": "k01.drums.a",
+            "start_bar": 0,
+            "variation": "a"
+          },
+          {
+            "source_part": "k01.drums.b",
+            "start_bar": 8,
+            "variation": "b"
+          },
+          {
+            "source_part": "k01.drums.a",
+            "start_bar": 24,
+            "variation": "a"
+          }
+        ],
+        "role": "drums",
+        "source_part": null
+      },
+      {
+        "channel": 9,
+        "name": "Percussion",
+        "placements": [
+          {
+            "source_part": "k01.percussion.a",
+            "start_bar": 0,
+            "variation": "a"
+          },
+          {
+            "source_part": "k01.percussion.b",
+            "start_bar": 8,
+            "variation": "b"
+          },
+          {
+            "source_part": "k01.percussion.a",
+            "start_bar": 24,
+            "variation": "a"
+          }
+        ],
+        "role": "percussion",
+        "source_part": null
+      },
+      {
+        "channel": 1,
+        "name": "Bass",
+        "placements": [
+          {
+            "source_part": "k01.bass.a",
+            "start_bar": 0,
+            "variation": "a"
+          },
+          {
+            "source_part": "k01.bass.b",
+            "start_bar": 8,
+            "variation": "b"
+          },
+          {
+            "source_part": "k01.bass.a",
+            "start_bar": 24,
+            "variation": "a"
+          }
+        ],
+        "role": "bass",
+        "source_part": null
+      },
+      {
+        "channel": 4,
+        "name": "Rhythmic Synth",
+        "placements": [
+          {
+            "source_part": "k01.rhythm.a",
+            "start_bar": 8,
+            "variation": "a"
+          },
+          {
+            "source_part": "k01.rhythm.b",
+            "start_bar": 16,
+            "variation": "b"
+          }
+        ],
+        "role": "rhythm",
+        "source_part": null
+      },
+      {
+        "channel": 3,
+        "name": "Lead",
+        "placements": [
+          {
+            "source_part": "k01.lead.a",
+            "start_bar": 0,
+            "variation": "a"
+          },
+          {
+            "source_part": "k01.lead.a",
+            "start_bar": 24,
+            "variation": "a"
+          }
+        ],
+        "role": "lead",
+        "source_part": null
+      },
+      {
+        "channel": 5,
+        "name": "Pad",
+        "placements": [
+          {
+            "source_part": "k01.pad.a",
+            "start_bar": 0,
+            "variation": "a"
+          },
+          {
+            "source_part": "k01.pad.a",
+            "start_bar": 8,
+            "variation": "a"
+          },
+          {
+            "source_part": "k01.pad.b",
+            "start_bar": 16,
+            "variation": "b"
+          },
+          {
+            "source_part": "k01.pad.a",
+            "start_bar": 24,
+            "variation": "a"
+          }
+        ],
+        "role": "pad",
+        "source_part": null
+      }
+    ]
+  },
+  "arrangement_bars": 32,
+  "arrangements": [
+    {
+      "bpm": 96,
+      "container_bars": 32,
+      "container_ticks": 122880,
+      "description": "k01 32-bar arrangement. Theme 90 notes. Pulse 112 notes. Open 16 notes, roles pad, rhythm, ratio 0.178 of the theme, no drums, no bass, no motif. Return 90 notes and restates k01.lead.a.",
+      "format": 1,
+      "id": "k01-arrangement",
+      "kit_id": "k01",
+      "meter": "4/4",
+      "path": "midi/k01-iron-gate/arrangement.mid",
+      "sections": [
+        {
+          "bars": 8,
+          "name": "Theme",
+          "parts": [
+            "k01.drums.a",
+            "k01.percussion.a",
+            "k01.bass.a",
+            "k01.lead.a",
+            "k01.pad.a"
+          ],
+          "start_bar": 0
+        },
+        {
+          "bars": 8,
+          "name": "Pulse",
+          "parts": [
+            "k01.drums.b",
+            "k01.percussion.b",
+            "k01.bass.b",
+            "k01.rhythm.a",
+            "k01.pad.a"
+          ],
+          "start_bar": 8
+        },
+        {
+          "bars": 8,
+          "name": "Open",
+          "parts": [
+            "k01.rhythm.b",
+            "k01.pad.b"
+          ],
+          "start_bar": 16
+        },
+        {
+          "bars": 8,
+          "name": "Return",
+          "parts": [
+            "k01.drums.a",
+            "k01.percussion.a",
+            "k01.bass.a",
+            "k01.lead.a",
+            "k01.pad.a"
+          ],
+          "start_bar": 24
+        }
+      ],
+      "tempo_us": 625000,
+      "tracks": [
+        {
+          "channel": null,
+          "name": "Conductor",
+          "placements": null,
+          "role": null,
+          "source_part": null
+        },
+        {
+          "channel": 9,
+          "name": "Drums",
+          "placements": [
+            {
+              "source_part": "k01.drums.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k01.drums.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k01.drums.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "drums",
+          "source_part": null
+        },
+        {
+          "channel": 9,
+          "name": "Percussion",
+          "placements": [
+            {
+              "source_part": "k01.percussion.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k01.percussion.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k01.percussion.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "percussion",
+          "source_part": null
+        },
+        {
+          "channel": 1,
+          "name": "Bass",
+          "placements": [
+            {
+              "source_part": "k01.bass.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k01.bass.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k01.bass.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "bass",
+          "source_part": null
+        },
+        {
+          "channel": 4,
+          "name": "Rhythmic Synth",
+          "placements": [
+            {
+              "source_part": "k01.rhythm.a",
+              "start_bar": 8,
+              "variation": "a"
+            },
+            {
+              "source_part": "k01.rhythm.b",
+              "start_bar": 16,
+              "variation": "b"
+            }
+          ],
+          "role": "rhythm",
+          "source_part": null
+        },
+        {
+          "channel": 3,
+          "name": "Lead",
+          "placements": [
+            {
+              "source_part": "k01.lead.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k01.lead.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "lead",
+          "source_part": null
+        },
+        {
+          "channel": 5,
+          "name": "Pad",
+          "placements": [
+            {
+              "source_part": "k01.pad.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k01.pad.a",
+              "start_bar": 8,
+              "variation": "a"
+            },
+            {
+              "source_part": "k01.pad.b",
+              "start_bar": 16,
+              "variation": "b"
+            },
+            {
+              "source_part": "k01.pad.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "pad",
+          "source_part": null
+        }
+      ]
+    },
+    {
+      "bpm": 104,
+      "container_bars": 32,
+      "container_ticks": 122880,
+      "description": "k02 32-bar arrangement. Theme 90 notes. Pulse 80 notes. Open 16 notes, roles pad, rhythm, ratio 0.178 of the theme, no drums, no bass, no motif. Return 90 notes and restates k02.lead.a.",
+      "format": 1,
+      "id": "k02-arrangement",
+      "kit_id": "k02",
+      "meter": "4/4",
+      "path": "midi/k02-black-motor/arrangement.mid",
+      "sections": [
+        {
+          "bars": 8,
+          "name": "Theme",
+          "parts": [
+            "k02.drums.a",
+            "k02.percussion.a",
+            "k02.bass.a",
+            "k02.lead.a",
+            "k02.pad.a"
+          ],
+          "start_bar": 0
+        },
+        {
+          "bars": 8,
+          "name": "Pulse",
+          "parts": [
+            "k02.drums.b",
+            "k02.percussion.b",
+            "k02.bass.b",
+            "k02.rhythm.a",
+            "k02.pad.a"
+          ],
+          "start_bar": 8
+        },
+        {
+          "bars": 8,
+          "name": "Open",
+          "parts": [
+            "k02.rhythm.b",
+            "k02.pad.b"
+          ],
+          "start_bar": 16
+        },
+        {
+          "bars": 8,
+          "name": "Return",
+          "parts": [
+            "k02.drums.a",
+            "k02.percussion.a",
+            "k02.bass.a",
+            "k02.lead.a",
+            "k02.pad.a"
+          ],
+          "start_bar": 24
+        }
+      ],
+      "tempo_us": 576923,
+      "tracks": [
+        {
+          "channel": null,
+          "name": "Conductor",
+          "placements": null,
+          "role": null,
+          "source_part": null
+        },
+        {
+          "channel": 9,
+          "name": "Drums",
+          "placements": [
+            {
+              "source_part": "k02.drums.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k02.drums.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k02.drums.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "drums",
+          "source_part": null
+        },
+        {
+          "channel": 9,
+          "name": "Percussion",
+          "placements": [
+            {
+              "source_part": "k02.percussion.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k02.percussion.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k02.percussion.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "percussion",
+          "source_part": null
+        },
+        {
+          "channel": 1,
+          "name": "Bass",
+          "placements": [
+            {
+              "source_part": "k02.bass.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k02.bass.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k02.bass.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "bass",
+          "source_part": null
+        },
+        {
+          "channel": 4,
+          "name": "Rhythmic Synth",
+          "placements": [
+            {
+              "source_part": "k02.rhythm.a",
+              "start_bar": 8,
+              "variation": "a"
+            },
+            {
+              "source_part": "k02.rhythm.b",
+              "start_bar": 16,
+              "variation": "b"
+            }
+          ],
+          "role": "rhythm",
+          "source_part": null
+        },
+        {
+          "channel": 3,
+          "name": "Lead",
+          "placements": [
+            {
+              "source_part": "k02.lead.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k02.lead.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "lead",
+          "source_part": null
+        },
+        {
+          "channel": 5,
+          "name": "Pad",
+          "placements": [
+            {
+              "source_part": "k02.pad.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k02.pad.a",
+              "start_bar": 8,
+              "variation": "a"
+            },
+            {
+              "source_part": "k02.pad.b",
+              "start_bar": 16,
+              "variation": "b"
+            },
+            {
+              "source_part": "k02.pad.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "pad",
+          "source_part": null
+        }
+      ]
+    },
+    {
+      "bpm": 112,
+      "container_bars": 32,
+      "container_ticks": 122880,
+      "description": "k03 32-bar arrangement. Theme 88 notes. Pulse 88 notes. Open 16 notes, roles pad, rhythm, ratio 0.182 of the theme, no drums, no bass, no motif. Return 88 notes and restates k03.lead.a.",
+      "format": 1,
+      "id": "k03-arrangement",
+      "kit_id": "k03",
+      "meter": "4/4",
+      "path": "midi/k03-voltage-veil/arrangement.mid",
+      "sections": [
+        {
+          "bars": 8,
+          "name": "Theme",
+          "parts": [
+            "k03.drums.a",
+            "k03.percussion.a",
+            "k03.bass.a",
+            "k03.lead.a",
+            "k03.pad.a"
+          ],
+          "start_bar": 0
+        },
+        {
+          "bars": 8,
+          "name": "Pulse",
+          "parts": [
+            "k03.drums.b",
+            "k03.percussion.b",
+            "k03.bass.b",
+            "k03.rhythm.a",
+            "k03.pad.a"
+          ],
+          "start_bar": 8
+        },
+        {
+          "bars": 8,
+          "name": "Open",
+          "parts": [
+            "k03.rhythm.b",
+            "k03.pad.b"
+          ],
+          "start_bar": 16
+        },
+        {
+          "bars": 8,
+          "name": "Return",
+          "parts": [
+            "k03.drums.a",
+            "k03.percussion.a",
+            "k03.bass.a",
+            "k03.lead.a",
+            "k03.pad.a"
+          ],
+          "start_bar": 24
+        }
+      ],
+      "tempo_us": 535714,
+      "tracks": [
+        {
+          "channel": null,
+          "name": "Conductor",
+          "placements": null,
+          "role": null,
+          "source_part": null
+        },
+        {
+          "channel": 9,
+          "name": "Drums",
+          "placements": [
+            {
+              "source_part": "k03.drums.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k03.drums.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k03.drums.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "drums",
+          "source_part": null
+        },
+        {
+          "channel": 9,
+          "name": "Percussion",
+          "placements": [
+            {
+              "source_part": "k03.percussion.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k03.percussion.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k03.percussion.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "percussion",
+          "source_part": null
+        },
+        {
+          "channel": 1,
+          "name": "Bass",
+          "placements": [
+            {
+              "source_part": "k03.bass.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k03.bass.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k03.bass.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "bass",
+          "source_part": null
+        },
+        {
+          "channel": 4,
+          "name": "Rhythmic Synth",
+          "placements": [
+            {
+              "source_part": "k03.rhythm.a",
+              "start_bar": 8,
+              "variation": "a"
+            },
+            {
+              "source_part": "k03.rhythm.b",
+              "start_bar": 16,
+              "variation": "b"
+            }
+          ],
+          "role": "rhythm",
+          "source_part": null
+        },
+        {
+          "channel": 3,
+          "name": "Lead",
+          "placements": [
+            {
+              "source_part": "k03.lead.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k03.lead.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "lead",
+          "source_part": null
+        },
+        {
+          "channel": 5,
+          "name": "Pad",
+          "placements": [
+            {
+              "source_part": "k03.pad.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k03.pad.a",
+              "start_bar": 8,
+              "variation": "a"
+            },
+            {
+              "source_part": "k03.pad.b",
+              "start_bar": 16,
+              "variation": "b"
+            },
+            {
+              "source_part": "k03.pad.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "pad",
+          "source_part": null
+        }
+      ]
+    },
+    {
+      "bpm": 120,
+      "container_bars": 32,
+      "container_ticks": 122880,
+      "description": "k04 32-bar arrangement. Theme 84 notes. Pulse 136 notes. Open 16 notes, roles pad, rhythm, ratio 0.19 of the theme, no drums, no bass, no motif. Return 84 notes and restates k04.lead.a.",
+      "format": 1,
+      "id": "k04-arrangement",
+      "kit_id": "k04",
+      "meter": "4/4",
+      "path": "midi/k04-red-terminal/arrangement.mid",
+      "sections": [
+        {
+          "bars": 8,
+          "name": "Theme",
+          "parts": [
+            "k04.drums.a",
+            "k04.percussion.a",
+            "k04.bass.a",
+            "k04.lead.a",
+            "k04.pad.a"
+          ],
+          "start_bar": 0
+        },
+        {
+          "bars": 8,
+          "name": "Pulse",
+          "parts": [
+            "k04.drums.b",
+            "k04.percussion.b",
+            "k04.bass.b",
+            "k04.rhythm.a",
+            "k04.pad.a"
+          ],
+          "start_bar": 8
+        },
+        {
+          "bars": 8,
+          "name": "Open",
+          "parts": [
+            "k04.rhythm.b",
+            "k04.pad.b"
+          ],
+          "start_bar": 16
+        },
+        {
+          "bars": 8,
+          "name": "Return",
+          "parts": [
+            "k04.drums.a",
+            "k04.percussion.a",
+            "k04.bass.a",
+            "k04.lead.a",
+            "k04.pad.a"
+          ],
+          "start_bar": 24
+        }
+      ],
+      "tempo_us": 500000,
+      "tracks": [
+        {
+          "channel": null,
+          "name": "Conductor",
+          "placements": null,
+          "role": null,
+          "source_part": null
+        },
+        {
+          "channel": 9,
+          "name": "Drums",
+          "placements": [
+            {
+              "source_part": "k04.drums.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k04.drums.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k04.drums.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "drums",
+          "source_part": null
+        },
+        {
+          "channel": 9,
+          "name": "Percussion",
+          "placements": [
+            {
+              "source_part": "k04.percussion.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k04.percussion.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k04.percussion.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "percussion",
+          "source_part": null
+        },
+        {
+          "channel": 1,
+          "name": "Bass",
+          "placements": [
+            {
+              "source_part": "k04.bass.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k04.bass.b",
+              "start_bar": 8,
+              "variation": "b"
+            },
+            {
+              "source_part": "k04.bass.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "bass",
+          "source_part": null
+        },
+        {
+          "channel": 4,
+          "name": "Rhythmic Synth",
+          "placements": [
+            {
+              "source_part": "k04.rhythm.a",
+              "start_bar": 8,
+              "variation": "a"
+            },
+            {
+              "source_part": "k04.rhythm.b",
+              "start_bar": 16,
+              "variation": "b"
+            }
+          ],
+          "role": "rhythm",
+          "source_part": null
+        },
+        {
+          "channel": 3,
+          "name": "Lead",
+          "placements": [
+            {
+              "source_part": "k04.lead.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k04.lead.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "lead",
+          "source_part": null
+        },
+        {
+          "channel": 5,
+          "name": "Pad",
+          "placements": [
+            {
+              "source_part": "k04.pad.a",
+              "start_bar": 0,
+              "variation": "a"
+            },
+            {
+              "source_part": "k04.pad.a",
+              "start_bar": 8,
+              "variation": "a"
+            },
+            {
+              "source_part": "k04.pad.b",
+              "start_bar": 16,
+              "variation": "b"
+            },
+            {
+              "source_part": "k04.pad.a",
+              "start_bar": 24,
+              "variation": "a"
+            }
+          ],
+          "role": "pad",
+          "source_part": null
+        }
+      ]
+    }
+  ],
+  "c4": 60,
+  "catalog_version": "1.0.0",
+  "channels": {
+    "bass": 1,
+    "drums": 9,
+    "lead": 3,
+    "pad": 5,
+    "percussion": 9,
+    "rhythm": 4
+  },
+  "core_part_count": 48,
+  "core_roles": [
+    "drums",
+    "percussion",
+    "bass",
+    "rhythm",
+    "lead",
+    "pad"
+  ],
+  "drum_channel_index": 9,
+  "drum_channel_number": 10,
+  "drum_map": {
+    "36": "Acoustic Bass Drum",
+    "37": "Side Stick",
+    "38": "Acoustic Snare",
+    "39": "Hand Clap",
+    "40": "Electric Snare",
+    "42": "Closed Hi-Hat",
+    "46": "Open Hi-Hat",
+    "49": "Crash Cymbal 1"
+  },
+  "excerpt_bars": 15,
+  "form_note": "Every arrangement is theme, pulse, open, return. The open section is thinner and has no drums, percussion, bass, or lead. The return restates motif A. Motif and pulse do not share a section. A bar stays 3840 ticks.",
+  "form_report": {
+    "k01": {
+      "open_note_ratio": 0.178,
+      "open_notes": 16,
+      "open_roles": [
+        "pad",
+        "rhythm"
+      ],
+      "pulse_notes": 112,
+      "return_lead": "k01.lead.a",
+      "return_notes": 90,
+      "theme_notes": 90,
+      "theme_roles": [
+        "bass",
+        "drums",
+        "lead",
+        "pad",
+        "percussion"
+      ]
+    },
+    "k02": {
+      "open_note_ratio": 0.178,
+      "open_notes": 16,
+      "open_roles": [
+        "pad",
+        "rhythm"
+      ],
+      "pulse_notes": 80,
+      "return_lead": "k02.lead.a",
+      "return_notes": 90,
+      "theme_notes": 90,
+      "theme_roles": [
+        "bass",
+        "drums",
+        "lead",
+        "pad",
+        "percussion"
+      ]
+    },
+    "k03": {
+      "open_note_ratio": 0.182,
+      "open_notes": 16,
+      "open_roles": [
+        "pad",
+        "rhythm"
+      ],
+      "pulse_notes": 88,
+      "return_lead": "k03.lead.a",
+      "return_notes": 88,
+      "theme_notes": 88,
+      "theme_roles": [
+        "bass",
+        "drums",
+        "lead",
+        "pad",
+        "percussion"
+      ]
+    },
+    "k04": {
+      "open_note_ratio": 0.19,
+      "open_notes": 16,
+      "open_roles": [
+        "pad",
+        "rhythm"
+      ],
+      "pulse_notes": 136,
+      "return_lead": "k04.lead.a",
+      "return_notes": 84,
+      "theme_notes": 84,
+      "theme_roles": [
+        "bass",
+        "drums",
+        "lead",
+        "pad",
+        "percussion"
+      ]
+    }
+  },
+  "generator_version": "1.0.0",
+  "kind": "construction-kit",
+  "kits": [
+    {
+      "arrangement_bars": 32,
+      "bar_ticks": 3840,
+      "bass_line": "k01.bass.a starts bar 1 D3, bar 3 C3, bar 5 G2, bar 7 A2.",
+      "bpm": 96,
+      "chord_lines": [],
+      "chord_regions": [],
+      "collection_name": "D Mixolydian",
+      "cycles": [
+        "Keys A changes chord every two bars: D dominant seventh, C major seventh, G major seventh, A minor seventh.",
+        "The open section is keys B, pulse B, and pad B. It has no drums, no bass, and no motif.",
+        "The return places motif A again, with the same drums, bass, keys, and pad as the theme."
+      ],
+      "departures": [
+        "k01.lead.b G#4 at tick 11520 is outside D Mixolydian."
+      ],
+      "effective_bpm": 96.0,
+      "id": "k01",
+      "identity": "Iron Gate is D Mixolydian at 128. The keys hold one chord for two bars, then rest before the next. The motif leaves a rest on the downbeat, rises a minor third, and sits out two later bars. Drums keep the kick on beat 1 and the snare on beat 3. The pulse uses straight eighths for four bars and is silent after that.",
+      "limitations": "Motif B is an alternate file. It is not placed in the arrangement, so it does not sit on the theme. The pulse and the motif are in different sections. Do not stack them.",
+      "meter": "4/4",
+      "part_bars": 8,
+      "pitch_classes": [
+        0,
+        2,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "seed": 96031,
+      "slug": "k01-iron-gate",
+      "spell": [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 625000,
+      "theme": {
+        "interval": "minor third",
+        "line": "k01.lead.a opens F#5 to A5, a minor third.",
+        "opening": [
+          "F#5",
+          "A5"
+        ],
+        "part_id": "k01.lead.a",
+        "semitones": 3
+      },
+      "theme_line": "k01.lead.a opens F#5 to A5, a minor third.",
+      "title": "Iron Gate",
+      "tonal_reference": "D",
+      "tonic": "D"
+    },
+    {
+      "arrangement_bars": 32,
+      "bar_ticks": 3840,
+      "bass_line": "k02.bass.a starts bar 1 A2, bar 3 D3, bar 5 E3, bar 7 F#3.",
+      "bpm": 104,
+      "chord_lines": [],
+      "chord_regions": [],
+      "collection_name": "A major",
+      "cycles": [
+        "Keys A is A major seventh, D major, E major, then F# minor, two bars each.",
+        "Sequence A steps every 640 ticks for four bars, then rests.",
+        "Bass A follows A, D, E, and F#."
+      ],
+      "departures": [
+        "k02.lead.b G4 at tick 15600 is outside A major."
+      ],
+      "effective_bpm": 104.00001386666851,
+      "id": "k02",
+      "identity": "White Cove is A major at 126. The motif starts on the downbeat and falls a major third before it climbs. The keys enter late, after tick 240, and the drums use a clap on beat 3 instead of a snare. Keys B ends on G major. G3 in that chord and G4 in motif B are outside A major.",
+      "limitations": "The G major chord is only in keys B, and keys B is only in the open section. Motif B is not in the arrangement.",
+      "meter": "4/4",
+      "part_bars": 8,
+      "pitch_classes": [
+        1,
+        2,
+        4,
+        6,
+        8,
+        9,
+        11
+      ],
+      "seed": 104031,
+      "slug": "k02-black-motor",
+      "spell": [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 576923,
+      "theme": {
+        "interval": "major third",
+        "line": "k02.lead.a opens C#5 to A4, a major third.",
+        "opening": [
+          "C#5",
+          "A4"
+        ],
+        "part_id": "k02.lead.a",
+        "semitones": 4
+      },
+      "theme_line": "k02.lead.a opens C#5 to A4, a major third.",
+      "title": "Black Motor",
+      "tonal_reference": "A",
+      "tonic": "A"
+    },
+    {
+      "arrangement_bars": 32,
+      "bar_ticks": 3840,
+      "bass_line": "k03.bass.a starts bar 1 G2, bar 5 D3.",
+      "bpm": 112,
+      "chord_lines": [],
+      "chord_regions": [],
+      "collection_name": "G Lydian",
+      "cycles": [
+        "Keys A bars 1-4 are G major seventh. Bars 5-8 are D major seventh.",
+        "The open section keeps the C major chord with a sparse pulse and a pad.",
+        "Drums A still leave space: kick, hat, snare, hat, then a gap inside the bar."
+      ],
+      "departures": [
+        "k03.lead.b C5 at tick 15360 is outside G Lydian."
+      ],
+      "effective_bpm": 112.00005973336519,
+      "id": "k03",
+      "identity": "Glass Room is G Lydian at 132. Each keys A chord lasts four bars. The second chord includes C#, which is in G Lydian. The motif opens a perfect fourth and leaves long gaps. Sequence A moves in quarter notes. Keys B ends on C major. C4 in that chord and C5 in motif B are outside G Lydian.",
+      "limitations": "The raised fourth in motif A is C#5, and it is inside the collection. The C natural notes are the departures.",
+      "meter": "4/4",
+      "part_bars": 8,
+      "pitch_classes": [
+        1,
+        2,
+        4,
+        6,
+        7,
+        9,
+        11
+      ],
+      "seed": 112031,
+      "slug": "k03-voltage-veil",
+      "spell": [
+        "C",
+        "C#",
+        "D",
+        "D#",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "G#",
+        "A",
+        "A#",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 535714,
+      "theme": {
+        "interval": "perfect fourth",
+        "line": "k03.lead.a opens B4 to E5, a perfect fourth.",
+        "opening": [
+          "B4",
+          "E5"
+        ],
+        "part_id": "k03.lead.a",
+        "semitones": 5
+      },
+      "theme_line": "k03.lead.a opens B4 to E5, a perfect fourth.",
+      "title": "Voltage Veil",
+      "tonal_reference": "G",
+      "tonic": "G"
+    },
+    {
+      "arrangement_bars": 32,
+      "bar_ticks": 3840,
+      "bass_line": "k04.bass.a starts bar 1 Bb3, bar 3 F3, bar 5 D3, bar 7 C3.",
+      "bpm": 120,
+      "chord_lines": [],
+      "chord_regions": [],
+      "collection_name": "F major",
+      "cycles": [
+        "Keys A is Bb major seventh, F major, D minor seventh, then C major.",
+        "Sequence A is sixteenth notes for four bars, then silence. It does not play with the motif.",
+        "The return restates motif A from F5."
+      ],
+      "departures": [
+        "k04.bass.b F#3 at tick 27600 is outside F major.",
+        "k04.lead.b F#4 at tick 15600 is outside F major."
+      ],
+      "effective_bpm": 120.0,
+      "id": "k04",
+      "identity": "Ferry Light is F major at 136. The motif moves by a major second, then a step down, with shorter notes than the other kits. The keys stab off the beat. The first chord is Bb major seventh. Bass B ends on F#3. Keys B ends on D major, which includes F#4. Motif B also sounds F#4.",
+      "limitations": "Bb is in F major. The three F# notes are outside F major. They are not a modulation. Motif B is an alternate and is not stacked on the return.",
+      "meter": "4/4",
+      "part_bars": 8,
+      "pitch_classes": [
+        0,
+        2,
+        4,
+        5,
+        7,
+        9,
+        10
+      ],
+      "seed": 120031,
+      "slug": "k04-red-terminal",
+      "spell": [
+        "C",
+        "C#",
+        "D",
+        "Eb",
+        "E",
+        "F",
+        "F#",
+        "G",
+        "Ab",
+        "A",
+        "Bb",
+        "B"
+      ],
+      "stochastic_draws": 0,
+      "tempo_us": 500000,
+      "theme": {
+        "interval": "major second",
+        "line": "k04.lead.a opens F5 to G5, a major second.",
+        "opening": [
+          "F5",
+          "G5"
+        ],
+        "part_id": "k04.lead.a",
+        "semitones": 2
+      },
+      "theme_line": "k04.lead.a opens F5 to G5, a major second.",
+      "title": "Red Terminal",
+      "tonal_reference": "F",
+      "tonic": "F"
+    }
+  ],
+  "listening": "No human listening audition was performed for this build.",
+  "meter": {
+    "bar_ticks": 3840,
+    "denominator": 4,
+    "numerator": 4
+  },
+  "microtiming": "offset is 0; performed_start = nominal_start",
+  "note_policy": "Note-only MIDI. No program changes, controllers, pitch bend, aftertouch, or SysEx.",
+  "pack_id": "darksynth",
+  "pack_name": "Darksynth",
+  "part_bars": 8,
+  "parts": [
+    {
+      "bpm": 96,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.drums.a",
+      "kit_id": "k01",
+      "monophonic": false,
+      "notes": 33,
+      "path": "midi/k01-iron-gate/drums-a.mid",
+      "role": "drums",
+      "study_id": "k01",
+      "variation": "a"
+    },
+    {
+      "bpm": 96,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.drums.b",
+      "kit_id": "k01",
+      "monophonic": false,
+      "notes": 40,
+      "path": "midi/k01-iron-gate/drums-b.mid",
+      "role": "drums",
+      "study_id": "k01",
+      "variation": "b"
+    },
+    {
+      "bpm": 96,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.percussion.a",
+      "kit_id": "k01",
+      "monophonic": false,
+      "notes": 24,
+      "path": "midi/k01-iron-gate/percussion-a.mid",
+      "role": "percussion",
+      "study_id": "k01",
+      "variation": "a"
+    },
+    {
+      "bpm": 96,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.percussion.b",
+      "kit_id": "k01",
+      "monophonic": false,
+      "notes": 24,
+      "path": "midi/k01-iron-gate/percussion-b.mid",
+      "role": "percussion",
+      "study_id": "k01",
+      "variation": "b"
+    },
+    {
+      "bpm": 96,
+      "channel": 1,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.bass.a",
+      "kit_id": "k01",
+      "monophonic": true,
+      "notes": 16,
+      "path": "midi/k01-iron-gate/bass-a.mid",
+      "role": "bass",
+      "study_id": "k01",
+      "variation": "a"
+    },
+    {
+      "bpm": 96,
+      "channel": 1,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.bass.b",
+      "kit_id": "k01",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k01-iron-gate/bass-b.mid",
+      "role": "bass",
+      "study_id": "k01",
+      "variation": "b"
+    },
+    {
+      "bpm": 96,
+      "channel": 4,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.rhythm.a",
+      "kit_id": "k01",
+      "monophonic": true,
+      "notes": 32,
+      "path": "midi/k01-iron-gate/rhythm-a.mid",
+      "role": "rhythm",
+      "study_id": "k01",
+      "variation": "a"
+    },
+    {
+      "bpm": 96,
+      "channel": 4,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.rhythm.b",
+      "kit_id": "k01",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k01-iron-gate/rhythm-b.mid",
+      "role": "rhythm",
+      "study_id": "k01",
+      "variation": "b"
+    },
+    {
+      "bpm": 96,
+      "channel": 3,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.lead.a",
+      "kit_id": "k01",
+      "monophonic": true,
+      "notes": 9,
+      "path": "midi/k01-iron-gate/lead-a.mid",
+      "role": "lead",
+      "study_id": "k01",
+      "variation": "a"
+    },
+    {
+      "bpm": 96,
+      "channel": 3,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.lead.b",
+      "kit_id": "k01",
+      "monophonic": true,
+      "notes": 9,
+      "path": "midi/k01-iron-gate/lead-b.mid",
+      "role": "lead",
+      "study_id": "k01",
+      "variation": "b"
+    },
+    {
+      "bpm": 96,
+      "channel": 5,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.pad.a",
+      "kit_id": "k01",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/k01-iron-gate/pad-a.mid",
+      "role": "pad",
+      "study_id": "k01",
+      "variation": "a"
+    },
+    {
+      "bpm": 96,
+      "channel": 5,
+      "container_bars": 8,
+      "core": true,
+      "id": "k01.pad.b",
+      "kit_id": "k01",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/k01-iron-gate/pad-b.mid",
+      "role": "pad",
+      "study_id": "k01",
+      "variation": "b"
+    },
+    {
+      "bpm": 104,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.drums.a",
+      "kit_id": "k02",
+      "monophonic": false,
+      "notes": 32,
+      "path": "midi/k02-black-motor/drums-a.mid",
+      "role": "drums",
+      "study_id": "k02",
+      "variation": "a"
+    },
+    {
+      "bpm": 104,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.drums.b",
+      "kit_id": "k02",
+      "monophonic": false,
+      "notes": 32,
+      "path": "midi/k02-black-motor/drums-b.mid",
+      "role": "drums",
+      "study_id": "k02",
+      "variation": "b"
+    },
+    {
+      "bpm": 104,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.percussion.a",
+      "kit_id": "k02",
+      "monophonic": false,
+      "notes": 24,
+      "path": "midi/k02-black-motor/percussion-a.mid",
+      "role": "percussion",
+      "study_id": "k02",
+      "variation": "a"
+    },
+    {
+      "bpm": 104,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.percussion.b",
+      "kit_id": "k02",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/k02-black-motor/percussion-b.mid",
+      "role": "percussion",
+      "study_id": "k02",
+      "variation": "b"
+    },
+    {
+      "bpm": 104,
+      "channel": 1,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.bass.a",
+      "kit_id": "k02",
+      "monophonic": true,
+      "notes": 16,
+      "path": "midi/k02-black-motor/bass-a.mid",
+      "role": "bass",
+      "study_id": "k02",
+      "variation": "a"
+    },
+    {
+      "bpm": 104,
+      "channel": 1,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.bass.b",
+      "kit_id": "k02",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k02-black-motor/bass-b.mid",
+      "role": "bass",
+      "study_id": "k02",
+      "variation": "b"
+    },
+    {
+      "bpm": 104,
+      "channel": 4,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.rhythm.a",
+      "kit_id": "k02",
+      "monophonic": true,
+      "notes": 24,
+      "path": "midi/k02-black-motor/rhythm-a.mid",
+      "role": "rhythm",
+      "study_id": "k02",
+      "variation": "a"
+    },
+    {
+      "bpm": 104,
+      "channel": 4,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.rhythm.b",
+      "kit_id": "k02",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k02-black-motor/rhythm-b.mid",
+      "role": "rhythm",
+      "study_id": "k02",
+      "variation": "b"
+    },
+    {
+      "bpm": 104,
+      "channel": 3,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.lead.a",
+      "kit_id": "k02",
+      "monophonic": true,
+      "notes": 10,
+      "path": "midi/k02-black-motor/lead-a.mid",
+      "role": "lead",
+      "study_id": "k02",
+      "variation": "a"
+    },
+    {
+      "bpm": 104,
+      "channel": 3,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.lead.b",
+      "kit_id": "k02",
+      "monophonic": true,
+      "notes": 9,
+      "path": "midi/k02-black-motor/lead-b.mid",
+      "role": "lead",
+      "study_id": "k02",
+      "variation": "b"
+    },
+    {
+      "bpm": 104,
+      "channel": 5,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.pad.a",
+      "kit_id": "k02",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/k02-black-motor/pad-a.mid",
+      "role": "pad",
+      "study_id": "k02",
+      "variation": "a"
+    },
+    {
+      "bpm": 104,
+      "channel": 5,
+      "container_bars": 8,
+      "core": true,
+      "id": "k02.pad.b",
+      "kit_id": "k02",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/k02-black-motor/pad-b.mid",
+      "role": "pad",
+      "study_id": "k02",
+      "variation": "b"
+    },
+    {
+      "bpm": 112,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.drums.a",
+      "kit_id": "k03",
+      "monophonic": false,
+      "notes": 32,
+      "path": "midi/k03-voltage-veil/drums-a.mid",
+      "role": "drums",
+      "study_id": "k03",
+      "variation": "a"
+    },
+    {
+      "bpm": 112,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.drums.b",
+      "kit_id": "k03",
+      "monophonic": false,
+      "notes": 32,
+      "path": "midi/k03-voltage-veil/drums-b.mid",
+      "role": "drums",
+      "study_id": "k03",
+      "variation": "b"
+    },
+    {
+      "bpm": 112,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.percussion.a",
+      "kit_id": "k03",
+      "monophonic": false,
+      "notes": 24,
+      "path": "midi/k03-voltage-veil/percussion-a.mid",
+      "role": "percussion",
+      "study_id": "k03",
+      "variation": "a"
+    },
+    {
+      "bpm": 112,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.percussion.b",
+      "kit_id": "k03",
+      "monophonic": false,
+      "notes": 24,
+      "path": "midi/k03-voltage-veil/percussion-b.mid",
+      "role": "percussion",
+      "study_id": "k03",
+      "variation": "b"
+    },
+    {
+      "bpm": 112,
+      "channel": 1,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.bass.a",
+      "kit_id": "k03",
+      "monophonic": true,
+      "notes": 16,
+      "path": "midi/k03-voltage-veil/bass-a.mid",
+      "role": "bass",
+      "study_id": "k03",
+      "variation": "a"
+    },
+    {
+      "bpm": 112,
+      "channel": 1,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.bass.b",
+      "kit_id": "k03",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k03-voltage-veil/bass-b.mid",
+      "role": "bass",
+      "study_id": "k03",
+      "variation": "b"
+    },
+    {
+      "bpm": 112,
+      "channel": 4,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.rhythm.a",
+      "kit_id": "k03",
+      "monophonic": true,
+      "notes": 16,
+      "path": "midi/k03-voltage-veil/rhythm-a.mid",
+      "role": "rhythm",
+      "study_id": "k03",
+      "variation": "a"
+    },
+    {
+      "bpm": 112,
+      "channel": 4,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.rhythm.b",
+      "kit_id": "k03",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k03-voltage-veil/rhythm-b.mid",
+      "role": "rhythm",
+      "study_id": "k03",
+      "variation": "b"
+    },
+    {
+      "bpm": 112,
+      "channel": 3,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.lead.a",
+      "kit_id": "k03",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k03-voltage-veil/lead-a.mid",
+      "role": "lead",
+      "study_id": "k03",
+      "variation": "a"
+    },
+    {
+      "bpm": 112,
+      "channel": 3,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.lead.b",
+      "kit_id": "k03",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k03-voltage-veil/lead-b.mid",
+      "role": "lead",
+      "study_id": "k03",
+      "variation": "b"
+    },
+    {
+      "bpm": 112,
+      "channel": 5,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.pad.a",
+      "kit_id": "k03",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/k03-voltage-veil/pad-a.mid",
+      "role": "pad",
+      "study_id": "k03",
+      "variation": "a"
+    },
+    {
+      "bpm": 112,
+      "channel": 5,
+      "container_bars": 8,
+      "core": true,
+      "id": "k03.pad.b",
+      "kit_id": "k03",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/k03-voltage-veil/pad-b.mid",
+      "role": "pad",
+      "study_id": "k03",
+      "variation": "b"
+    },
+    {
+      "bpm": 120,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.drums.a",
+      "kit_id": "k04",
+      "monophonic": false,
+      "notes": 24,
+      "path": "midi/k04-red-terminal/drums-a.mid",
+      "role": "drums",
+      "study_id": "k04",
+      "variation": "a"
+    },
+    {
+      "bpm": 120,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.drums.b",
+      "kit_id": "k04",
+      "monophonic": false,
+      "notes": 32,
+      "path": "midi/k04-red-terminal/drums-b.mid",
+      "role": "drums",
+      "study_id": "k04",
+      "variation": "b"
+    },
+    {
+      "bpm": 120,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.percussion.a",
+      "kit_id": "k04",
+      "monophonic": false,
+      "notes": 24,
+      "path": "midi/k04-red-terminal/percussion-a.mid",
+      "role": "percussion",
+      "study_id": "k04",
+      "variation": "a"
+    },
+    {
+      "bpm": 120,
+      "channel": 9,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.percussion.b",
+      "kit_id": "k04",
+      "monophonic": false,
+      "notes": 24,
+      "path": "midi/k04-red-terminal/percussion-b.mid",
+      "role": "percussion",
+      "study_id": "k04",
+      "variation": "b"
+    },
+    {
+      "bpm": 120,
+      "channel": 1,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.bass.a",
+      "kit_id": "k04",
+      "monophonic": true,
+      "notes": 16,
+      "path": "midi/k04-red-terminal/bass-a.mid",
+      "role": "bass",
+      "study_id": "k04",
+      "variation": "a"
+    },
+    {
+      "bpm": 120,
+      "channel": 1,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.bass.b",
+      "kit_id": "k04",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k04-red-terminal/bass-b.mid",
+      "role": "bass",
+      "study_id": "k04",
+      "variation": "b"
+    },
+    {
+      "bpm": 120,
+      "channel": 4,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.rhythm.a",
+      "kit_id": "k04",
+      "monophonic": true,
+      "notes": 64,
+      "path": "midi/k04-red-terminal/rhythm-a.mid",
+      "role": "rhythm",
+      "study_id": "k04",
+      "variation": "a"
+    },
+    {
+      "bpm": 120,
+      "channel": 4,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.rhythm.b",
+      "kit_id": "k04",
+      "monophonic": true,
+      "notes": 8,
+      "path": "midi/k04-red-terminal/rhythm-b.mid",
+      "role": "rhythm",
+      "study_id": "k04",
+      "variation": "b"
+    },
+    {
+      "bpm": 120,
+      "channel": 3,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.lead.a",
+      "kit_id": "k04",
+      "monophonic": true,
+      "notes": 12,
+      "path": "midi/k04-red-terminal/lead-a.mid",
+      "role": "lead",
+      "study_id": "k04",
+      "variation": "a"
+    },
+    {
+      "bpm": 120,
+      "channel": 3,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.lead.b",
+      "kit_id": "k04",
+      "monophonic": true,
+      "notes": 9,
+      "path": "midi/k04-red-terminal/lead-b.mid",
+      "role": "lead",
+      "study_id": "k04",
+      "variation": "b"
+    },
+    {
+      "bpm": 120,
+      "channel": 5,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.pad.a",
+      "kit_id": "k04",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/k04-red-terminal/pad-a.mid",
+      "role": "pad",
+      "study_id": "k04",
+      "variation": "a"
+    },
+    {
+      "bpm": 120,
+      "channel": 5,
+      "container_bars": 8,
+      "core": true,
+      "id": "k04.pad.b",
+      "kit_id": "k04",
+      "monophonic": false,
+      "notes": 8,
+      "path": "midi/k04-red-terminal/pad-b.mid",
+      "role": "pad",
+      "study_id": "k04",
+      "variation": "b"
+    }
+  ],
+  "ppq": 960,
+  "preview_excerpt": {
+    "arrangement_path": "midi/k01-iron-gate/arrangement.mid",
+    "bars": "17-31 of the 32-bar arrangement",
+    "end_tick": 119040,
+    "full_arrangement_seconds": 80.0,
+    "kit_id": "k01",
+    "reason": "The preview is an excerpt of the 32-bar Iron Gate arrangement. Bars 17-24 are the open section. Bars 25-31 are the start of the return, and the return restates lead A. Bars 1-16, the opening theme and the pulse, stay in the MIDI and are not in the MP3. The full arrangement is longer than 40 seconds.",
+    "score_seconds": 37.5,
+    "start_bar": 16,
+    "start_tick": 61440
+  },
+  "range_statement": "Drums use MIDI channel index 9, the GM channel 10, and only the mapped pitches 36 kick, 37 side stick, 38 acoustic snare, 39 clap, 40 electric snare, 42 closed hat, 46 open hat, and 49 crash. Bass is monophonic, MIDI 41 to 62, channel 1, and it avoids the drum pitches. Harmonic keys allow four notes, MIDI 48 to 76, channel 2. Motif is monophonic, MIDI 60 to 86, channel 3. Sequence is monophonic, MIDI 52 to 81, channel 4. Pad allows four notes, MIDI 48 to 81, channel 5. C4 is 60.",
+  "reference_part_count": 0,
+  "seed_meaning": "Seeds identify kits. Nothing is random.",
+  "stack_warning": "Use either the combined arrangement or the separate parts. Do not stack the part files on top of the combined file.",
+  "stochastic_draws": 0,
+  "style_note": "Darksynth is a creative label here. It is not a claim of scene membership or a fixed genre boundary."
+}
