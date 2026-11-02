@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+build/
+*.wav
+.DS_Store
+.netlify/
+node_modules/
+.playwright-mcp/
